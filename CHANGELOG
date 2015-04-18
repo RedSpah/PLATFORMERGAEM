@@ -1,0 +1,36 @@
+Version 0.0.1   - 08-04-15 - IT BEGINS
+* Added Player
+* Added Basic Physics
+* Added Walljump, Boost, Double Jump
+
+Version 0.0.1.1 - 09-04-15 - IT CONTINUES
+* Added Dashing and Downdashing
+* Added Gliding
+* Added Wallkick, Wallclimb and Pullup
+
+Version 0.0.2   - 11-04-15 - IT DIES
+* Added Checkpoints
+* Added Dying
+
+Version 0.0.2.1 - 12-04-15 - IT SEES
+* Added Camera
+* Added Timer
+
+Version 0.0.2.2 - 13-04-15 - IT ENDS
+* Added End Level object
+* Added Begin Level object
+* Began working on Replay
+
+Version 0.0.3   - 15-04-15 - IT REPLAYS
+* Finished Replays
+* Improved Begin Level object
+
+Version 0.0.3.1 - 16-04-15 - IT FASTS
+* Added 3-2-1-FAST sequence at the start of level
+* Began working on Turrets
+
+Version 0.0.3.2 - 17-04-15 - IT KILLS
+* Turrets Continue
+* Added Bullets
+* Improved Boost 
+
