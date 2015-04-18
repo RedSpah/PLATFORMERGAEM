@@ -34,3 +34,9 @@ Version 0.0.3.2 - 17-04-15 - IT KILLS
 * Added Bullets
 * Improved Boost 
 
+Version 0.0.4   - 18-04-15 - IT REPLAYS AND KILLS
+* Projectile Turrets done
+* Begin level object overhaul
+* Resetting overhaul
+* Should restart smoother
+* Turrets work with restarting
