@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{90DA9B87-3EB0-DC0B-D721-025B318DDAD7}</ProjectGuid>
+	<ProjectGuid>{D6B2AB86-12D1-DC6E-D116-0435672C9BAF}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,17 +46,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\S_BulletLogic.cs" />
-     <Compile Include="Assets\Scripts\S_CamTrigger.cs" />
-     <Compile Include="Assets\Scripts\S_Camera.cs" />
-     <Compile Include="Assets\Scripts\S_CameraFocus.cs" />
-     <Compile Include="Assets\Scripts\S_Checkpoint.cs" />
-     <Compile Include="Assets\Scripts\S_EndLevel.cs" />
-     <Compile Include="Assets\Scripts\S_Killzone.cs" />
-     <Compile Include="Assets\Scripts\S_LevelStart.cs" />
-     <Compile Include="Assets\Scripts\S_PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\S_Turret.cs" />
-     <Compile Include="Assets\Scripts\S_UISystem.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_Boostable.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_BulletLogic.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_Turret.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_CamTrigger.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_Camera.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_CameraFocus.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_Checkpoint.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_EndLevel.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_EntityManager.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_Killzone.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_LevelStart.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_UISystem.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
