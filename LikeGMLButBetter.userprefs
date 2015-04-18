@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\S_PlayerMovement.cs">
+    <Files>
+      <File FileName="LikeGMLButBetter.sln" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\S_PlayerMovement.cs" Line="421" Column="25" />
+      <File FileName="Assets\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\2D\Scripts\Platformer2DUserControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\S_Camera.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

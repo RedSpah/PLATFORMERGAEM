@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: 0f7f6715707354b4f955131901bb64d4
+timeCreated: 1429304431
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: O_Player
+    21300002: TO_PointArrow
+    21300004: O_Block
+    21300006: O_Block
+    21300008: TO_PointArrow
+    21300010: S_PlayerHead
+    21300012: S_PlayerTorso
+    21300014: S_PlayerWaist
+    21300016: S_PlayerUpperArm
+    21300018: S_PlayerForearm
+    21300020: S_PlayerHand
+    21300022: S_PlayerThigh
+    21300024: S_PlayerCalf
+    21300026: S_PlayerFoot
+    21300028: O_DebugPlayer
+    21300030: O_CubePlayer
+    21300032: S_Checkpoint
+    21300034: S_Killzone
+    21300036: S_Block
+    21300038: S_CamFocus
+    21300040: S_StartingPoint
+    21300042: S_NextCamTrigger
+    21300044: S_EndLevel
+    21300046: S_Replay
+    21300048: S_CannonBulk
+    21300050: S_CannonBarrel
+    21300052: S_BulletBoostable
+    21300054: S_BulletNotBoostable
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 128
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: O_Block
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TO_PointArrow
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 107
+        width: 50
+        height: 20
+      alignment: 9
+      pivot: {x: .402690053, y: .490642548}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerHead
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 92
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerTorso
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 83
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerWaist
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 79
+        width: 4
+        height: 3
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerUpperArm
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 84
+        width: 3
+        height: 6
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerForearm
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 78
+        width: 3
+        height: 6
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerHand
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 76
+        width: 2
+        height: 2
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerThigh
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 73
+        width: 4
+        height: 8
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerCalf
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 66
+        width: 3
+        height: 7
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_PlayerFoot
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 64
+        width: 5
+        height: 2
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: O_DebugPlayer
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 61
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: O_CubePlayer
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 77
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_Checkpoint
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 16
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_Killzone
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 19
+        width: 25
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_Block
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 37
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_CamFocus
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 13
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_StartingPoint
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 14
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_NextCamTrigger
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 37
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_EndLevel
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 39
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_Replay
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 43
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_CannonBulk
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 108
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_CannonBarrel
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 95
+        width: 23
+        height: 10
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: S_BulletBoostable
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 2
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 2}
+    - name: S_BulletNotBoostable
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 2
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

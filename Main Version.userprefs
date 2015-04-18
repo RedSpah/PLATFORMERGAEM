@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\S_PlayerMovement.cs">
+    <Files>
+      <File FileName="Main Version.sln" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\S_Turret.cs" Line="7" Column="21" />
+      <File FileName="Assets\Scripts\S_LevelStart.cs" Line="162" Column="24" />
+      <File FileName="Assets\Scripts\S_Checkpoint.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\S_BulletLogic.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\S_Killzone.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\S_PlayerMovement.cs" Line="380" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
