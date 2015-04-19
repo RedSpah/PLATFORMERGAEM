@@ -202,11 +202,11 @@ public class S_PlayerMovement : MonoBehaviour {
 			// Execute everything related to wallgrabbing (or wallsticking, whatever you wanna call it)
 			wallgrabbing ();
 
-			pullingup ();
+
 			if (!WalljumpEnabled) {
 				wallclimbing ();
 								
-
+				pullingup ();
 			}
 
 			// Move the Player
@@ -613,6 +613,10 @@ public class S_PlayerMovement : MonoBehaviour {
 		// For 'sticky' effect
 		if (GrabbingWall && Rigid.velocity.y < 0) {
 			Rigid.velocity = new Vector2(Rigid.velocity.x,Rigid.velocity.y*WallgrabGlueFactor);
+		}
+
+		if (!TouchingWall) {
+			GrabbingWall = false;
 		}
 	}
 

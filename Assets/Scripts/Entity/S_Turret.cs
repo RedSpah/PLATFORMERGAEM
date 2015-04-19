@@ -12,7 +12,7 @@ public class S_Turret : MonoBehaviour {
 
 	public LayerMask CollisionLayer;
 	public LayerMask PlayerLayer;
-
+	public LayerMask EndLevel;
 
 
 	public int InitWait = 20;
@@ -47,6 +47,7 @@ public class S_Turret : MonoBehaviour {
 		Laser.enabled = true;
 		Laser.useWorldSpace = true;
 
+		CollisionLayer += EndLevel;
 		PlayerLayer += CollisionLayer;
 	}
 	
