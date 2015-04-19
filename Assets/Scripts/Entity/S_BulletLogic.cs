@@ -4,6 +4,7 @@ using System.Collections;
 public class S_BulletLogic : MonoBehaviour {
 
 	public LayerMask ColLayer;
+	public LayerMask EndLevel;
 	public static int framelife = 240;
 
 	private int laif;
@@ -15,7 +16,7 @@ public class S_BulletLogic : MonoBehaviour {
 
 
 	void FixedUpdate () {
-		if (SelfCol.IsTouchingLayers (ColLayer)) {
+		if (SelfCol.IsTouchingLayers (ColLayer) || SelfCol.IsTouchingLayers (EndLevel)) {
 			Destroy(gameObject);
 		}
 		laif--;

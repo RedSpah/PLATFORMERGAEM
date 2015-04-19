@@ -55,7 +55,7 @@ public class S_PlayerMovement : MonoBehaviour {
 	[SerializeField] private  float PullupForce					= 750f;		// Pullup Force
 	
 	[SerializeField] private  LayerMask CollisionMask;  						// Collision Mask
-	[SerializeField] private  Rigidbody2D Rigidbody;							// Reference to own rigidbody
+	[SerializeField] private  Rigidbody2D Rigid;							// Reference to own rigidbody
 	[SerializeField] private  GameObject BoostableBullet;		
 
 	/*-------------VARS-----------------*/
@@ -162,7 +162,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		//ArrowReference = GameObject.FindGameObjectWithTag("Arrow");
 		ArrowTransform = ArrowReference.GetComponent<Transform>();
 		ArrowRenderer = ArrowReference.GetComponent<SpriteRenderer>();
-		Rigidbody = GetComponent<Rigidbody2D>();
+		Rigid = GetComponent<Rigidbody2D>();
 		ParticleSys = GetComponent<ParticleSystem> ();
 		ParticleSys.enableEmission = false;
 
@@ -395,7 +395,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		if (Boostable) {
 			// If boost key is pressed and the player is ready for boost
 			if (K_Boost && BoostCooldownTimer == 0 && !BoostKeylock) {
-				Rigidbody.isKinematic = true; //prevents movement, accepting more elegant solutions
+				Rigid.isKinematic = true; //prevents movement, accepting more elegant solutions
 				BoostTimer++; 
 				Boosting = true;
 
@@ -411,8 +411,8 @@ public class S_PlayerMovement : MonoBehaviour {
 				BoostCooldownTimer = BoostCooldown;
 				Boosting = false;
 				BoostKeylock = true;
-				Rigidbody.isKinematic = false; 
-				Rigidbody.AddForce (new Vector2 (Mathf.Cos (Mathf.Deg2Rad * BoostArrowDirection) * BoostForce, Mathf.Sin (Mathf.Deg2Rad * BoostArrowDirection) * BoostForce));
+				Rigid.isKinematic = false; 
+				Rigid.AddForce (new Vector2 (Mathf.Cos (Mathf.Deg2Rad * BoostArrowDirection) * BoostForce, Mathf.Sin (Mathf.Deg2Rad * BoostArrowDirection) * BoostForce));
 				Boosted = true;
 			}
 		}
@@ -443,8 +443,8 @@ public class S_PlayerMovement : MonoBehaviour {
 		if (!OnGround && K_Jump && !JumpKeylock && (JumpsLeft>0) && !TouchingWall) 
 		{
 			
-			Rigidbody.velocity = new Vector2(Rigidbody.velocity.x ,0); // Erasing vertical velocity, may look strange but try running the code without it
-			Rigidbody.AddForce(new Vector2(0f, JumpingForce*v ));
+			Rigid.velocity = new Vector2(Rigid.velocity.x ,0); // Erasing vertical velocity, may look strange but try running the code without it
+			Rigid.AddForce(new Vector2(0f, JumpingForce*v ));
 			JumpsLeft--;
 
 			if (JumpsLeft == 0) {
@@ -458,7 +458,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		{
 			OnGround = false;
 
-			Rigidbody.AddForce(new Vector2(0f, JumpingForce*v));
+			Rigid.AddForce(new Vector2(0f, JumpingForce*v));
 			TouchingWall = false;
 		}
 
@@ -469,14 +469,14 @@ public class S_PlayerMovement : MonoBehaviour {
 			if (WalljumpEnabled)
 			{
 				float r = (GrabbingWall) ? WallgrabWalljumpMult : 1; // Multiplier to walljump power if wallgrabbing
-				Rigidbody.velocity = new Vector2(Rigidbody.velocity.x,0);
-				Rigidbody.AddForce (new Vector2(JumpingForce*0.66f*WallSide*-1*r,JumpingForce*r));
+				Rigid.velocity = new Vector2(Rigid.velocity.x,0);
+				Rigid.AddForce (new Vector2(JumpingForce*0.66f*WallSide*-1*r,JumpingForce*r));
 			}
 			else
 			{
 				float r = (GrabbingWall) ? WallgrabWallkickMult : 1; // Multiplier to walljump power if wallgrabbing
-				Rigidbody.velocity = new Vector2(Rigidbody.velocity.x,Rigidbody.velocity.y/5);
-				Rigidbody.AddForce (new Vector2(JumpingForce*0.66f*WallSide*-1*r*WallkickHorizontalMult,JumpingForce*r*WallkickVerticalMult));
+				Rigid.velocity = new Vector2(Rigid.velocity.x,Rigid.velocity.y/5);
+				Rigid.AddForce (new Vector2(JumpingForce*0.66f*WallSide*-1*r*WallkickHorizontalMult,JumpingForce*r*WallkickVerticalMult));
 				WallkickComebackTimer = WallkickComebackTime;
 				WallkickSide = WallSide;
 				JumpKeylock = true;
@@ -527,23 +527,23 @@ public class S_PlayerMovement : MonoBehaviour {
 			{
 				DashesLeft--;
 				Sprinting = true;
-				Rigidbody.velocity = new Vector2 (MaximumSprintingSpeed*FacingDirection,0);
+				Rigid.velocity = new Vector2 (MaximumSprintingSpeed*FacingDirection,0);
 			}
 
 			// Downdash
 			else
 			{
 				Sprinting = false;
-				Rigidbody.velocity = new Vector2(0,-MaximumSprintingSpeed);
+				Rigid.velocity = new Vector2(0,-MaximumSprintingSpeed);
 			}
 
 			// Additional force for bigger effect
 			if (InAir)
 			{
 				if (!K_Down)
-					Rigidbody.AddForce(new Vector2(FacingDirection*DashForce,DashAirPushForce));
+					Rigid.AddForce(new Vector2(FacingDirection*DashForce,DashAirPushForce));
 				else
-					Rigidbody.AddForce (new Vector2(0,-DashForce));
+					Rigid.AddForce (new Vector2(0,-DashForce));
 			}
 		}
 
@@ -611,8 +611,8 @@ public class S_PlayerMovement : MonoBehaviour {
 		}
 
 		// For 'sticky' effect
-		if (GrabbingWall && Rigidbody.velocity.y < 0) {
-			Rigidbody.velocity = new Vector2(Rigidbody.velocity.x,Rigidbody.velocity.y*WallgrabGlueFactor);
+		if (GrabbingWall && Rigid.velocity.y < 0) {
+			Rigid.velocity = new Vector2(Rigid.velocity.x,Rigid.velocity.y*WallgrabGlueFactor);
 		}
 	}
 
@@ -622,7 +622,7 @@ public class S_PlayerMovement : MonoBehaviour {
 	{
 		// Simple enough, fall and move slower
 		if (K_Jump && JumpsLeft == 0 && ( !JumpKeylock || GlideKeylockOverride ) && !TouchingWall) {
-			Rigidbody.velocity = new Vector2(Rigidbody.velocity.x * GlideHorizontalMult, Rigidbody.velocity.y * GlideVerticalMult);
+			Rigid.velocity = new Vector2(Rigid.velocity.x * GlideHorizontalMult, Rigid.velocity.y * GlideVerticalMult);
 			GlideKeylockOverride = true;
 		}
 
@@ -636,8 +636,8 @@ public class S_PlayerMovement : MonoBehaviour {
 	void wallclimbing ()
 	{
 		if (K_Up && TouchingWall && WallclimbsLeft > 0 && WallclimbCooldownTimer == 0 && !UpKeylock) {
-			Rigidbody.velocity = new Vector2(Rigidbody.velocity.x,0);
-			Rigidbody.AddForce (new Vector2 (0, WallclimbForce));
+			Rigid.velocity = new Vector2(Rigid.velocity.x,0);
+			Rigid.AddForce (new Vector2 (0, WallclimbForce));
 			WallclimbsLeft--;
 			WallclimbCooldownTimer = WallclimbCooldown;
 			UpKeylock = true;
@@ -665,18 +665,18 @@ public class S_PlayerMovement : MonoBehaviour {
 
 
 		// Grab
-		if (Rigidbody.velocity.y <= 0 && mv) 
+		if (Rigid.velocity.y <= 0 && mv) 
 		{
 
-			Rigidbody.isKinematic = true;
+			Rigid.isKinematic = true;
 
 			// And pull
 			if (K_Up || K_Jump) {
-				Rigidbody.isKinematic = false;
-				Rigidbody.AddForce (new Vector2 (0, PullupForce)); 
+				Rigid.isKinematic = false;
+				Rigid.AddForce (new Vector2 (0, PullupForce)); 
 			}
 		} else if (!Boosting) {
-			Rigidbody.isKinematic = false;
+			Rigid.isKinematic = false;
 		}
 
 	}
@@ -692,10 +692,10 @@ public class S_PlayerMovement : MonoBehaviour {
 		if (!GrabbingWall) 
 		{
 			float r = (WallkickSide == InputDirection) ? WallkickComebackMult : (WallSide == InputDirection) ? 0.0f : 1.0f; 
-			Rigidbody.AddForce (new Vector2 (InputDirection * RunningForce * r, 0));
+			Rigid.AddForce (new Vector2 (InputDirection * RunningForce * r, 0));
 		}; 
 		
-		float v = Rigidbody.velocity.x;
+		float v = Rigid.velocity.x;
 
 		// Limit speed if either no input from keys or moving faster than allowed
 		if (InputDirection != 0)
@@ -717,7 +717,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		}
 
 		// Apply reduced speed
-		Rigidbody.velocity = new Vector2 (v, (OnGround) ? 0 : Rigidbody.velocity.y );
+		Rigid.velocity = new Vector2 (v, (OnGround) ? 0 : Rigid.velocity.y );
 	}
 
 	public void death()
@@ -736,7 +736,7 @@ public class S_PlayerMovement : MonoBehaviour {
 	private IEnumerator deathpriv()
 	{
 
-		Rigidbody.isKinematic = true;
+		Rigid.isKinematic = true;
 		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 		yield return new WaitForSeconds(0.30f);
 		ParticleSys.Clear ();
@@ -755,7 +755,7 @@ public class S_PlayerMovement : MonoBehaviour {
 			foreach (GameObject k in alltur) {
 				k.GetComponent<S_Turret> ().turretActive = true;
 			}
-			Rigidbody.isKinematic = false;
+			Rigid.isKinematic = false;
 			gameObject.transform.position = new Vector3(CheckpointReference.x,CheckpointReference.y,CheckpointReference.z);
 			gameObject.GetComponent<SpriteRenderer> ().enabled = true;
 			Dying = false;
@@ -772,6 +772,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		LevelStart = true;
 		CheckpointReference = StartPos;
 		gameObject.transform.position = StartPos;
+		Rigid.velocity = new Vector2 (0,0);
 	}
 
 	public void ResetLevel()
@@ -783,6 +784,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		CheckpointReference = StartPos;
 		GetInput = true;
 		gameObject.transform.position = StartPos;
+		Rigid.velocity = new Vector2 (0,0);
 	}
 
 	public void SetStartPos(Vector3 pos)
