@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0f7f6715707354b4f955131901bb64d4
-timeCreated: 1429304431
+timeCreated: 1429645738
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,7 +28,7 @@ TextureImporter:
     21300042: S_NextCamTrigger
     21300044: S_EndLevel
     21300046: S_Replay
-    21300048: S_CannonBulk
+    21300048: S_Rocket
     21300050: S_CannonBarrel
     21300052: S_BulletBoostable
     21300054: S_BulletNotBoostable
@@ -287,13 +287,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: S_CannonBulk
+    - name: S_Rocket
       rect:
         serializedVersion: 2
-        x: 94
+        x: 89
         y: 108
-        width: 25
-        height: 17
+        width: 29
+        height: 20
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

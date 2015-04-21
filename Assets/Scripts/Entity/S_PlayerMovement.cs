@@ -120,6 +120,10 @@ public class S_PlayerMovement : MonoBehaviour {
 	private bool Boostable = false;
 	private Vector3 StartPos;
 
+    private float grounddir;
+    private RaycastHit2D rch;
+    private Vector3 ray;
+
 	/*------------INPUT----------------*/
 
 	private bool 	K_Jump = false;					// Z key
@@ -165,7 +169,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		Rigid = GetComponent<Rigidbody2D>();
 		ParticleSys = GetComponent<ParticleSystem> ();
 		ParticleSys.enableEmission = false;
-
+        ray = gameObject.transform.TransformDirection(Vector3.down);
 
 		//UIReference = GameObject.Find ("UI_Canvas").GetComponent<S_UISystem>();
 	}
@@ -210,9 +214,12 @@ public class S_PlayerMovement : MonoBehaviour {
 			}
 
 			// Move the Player
-			movement (); 
+			movement ();
 
 
+           
+
+ 
 
 			// Lock for Dash Key
 			DashKeylock = K_Dash;
@@ -731,7 +738,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		ParticleSys.Emit (1);
 		GameObject[] alltur = GameObject.FindGameObjectsWithTag ("Turret");
 		foreach (GameObject k in alltur) {
-			k.GetComponent<S_Turret> ().turretActive = false;
+			k.GetComponent<S_Turret> ().ToggleTurret(false);
 		}
 		Dying = true;
 		StartCoroutine (deathpriv ());
@@ -757,7 +764,7 @@ public class S_PlayerMovement : MonoBehaviour {
 			}
 			GameObject[] alltur = GameObject.FindGameObjectsWithTag ("Turret");
 			foreach (GameObject k in alltur) {
-				k.GetComponent<S_Turret> ().turretActive = true;
+				k.GetComponent<S_Turret> ().ToggleTurret(true);
 			}
 			Rigid.isKinematic = false;
 			gameObject.transform.position = new Vector3(CheckpointReference.x,CheckpointReference.y,CheckpointReference.z);

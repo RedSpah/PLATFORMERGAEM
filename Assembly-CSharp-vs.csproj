@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Entity\S_Boostable.cs" />
      <Compile Include="Assets\Scripts\Entity\S_BulletLogic.cs" />
      <Compile Include="Assets\Scripts\Entity\S_PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_Rocket.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Turret.cs" />
      <Compile Include="Assets\Scripts\Technical\S_CamTrigger.cs" />
      <Compile Include="Assets\Scripts\Technical\S_Camera.cs" />

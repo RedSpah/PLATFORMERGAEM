@@ -41,50 +41,18 @@ public class S_LevelStart : MonoBehaviour {
 
 	}
 
-	public void ResetLevel(bool init)
-	{
-		// PREPARE FAST CANVAS
-		fastcanvasref.GetComponentInChildren<Image>().enabled = true;
+	
 
-		// RESET PLAYER 
-		playerRef.gameObject.GetComponent<S_PlayerMovement> ().ResetLevel();
-
-		// RESET CAMERA
-		camRef.gameObject.GetComponent<S_Camera> ().ResetCamera (gameObject.transform.position);
-		camRef.gameObject.GetComponent<S_Camera> ().NextFocus(FirstFocusRef,FirstCamFollowX,FirstCamFollowY,FirstCamBufX,FirstCamBufY,FirstCamSmooth,FirstCamZoom);
-
-		// RESET UI
-		canvasRef.GetComponent<S_UISystem>().ResetLevel();
-
-		foreach (GameObject k in TurretsRef) {
-			k.GetComponent<S_Turret> ().ResetLevel();
-		}
-
-		GameObject[] h = GameObject.FindGameObjectsWithTag("Bullet");
-		foreach (GameObject y in h) {
-			Destroy(y);
-		}
-
-		// PREPARE TO BEGIN
-		if (init) {
-			BeginTimer = Begintime;
-			fastcanvasref.GetComponentInChildren<Image> ().sprite = fast3;
-			foreach (GameObject k in TurretsRef) {
-				k.GetComponent<S_Turret> ().ResetLevelInit();
-			}
-		} else {
-			BeginTimer = 0;
-			fastcanvasref.GetComponentInChildren<Image>().enabled = false;
-		}
-	}
-
-	public void ResetLevel(bool init, ref List<byte> inp)
+	public void ResetLevel(bool init, List<byte> inp = null)
 	{
 		// PREPARE FAST CANVAS
 		fastcanvasref.GetComponentInChildren<Image>().enabled = true;
 
 		// RESET PLAYER AND PREPARE FOR REPLAY
-		playerRef.gameObject.GetComponent<S_PlayerMovement> ().ResetLevel(ref inp);
+        if (inp == null)
+            playerRef.gameObject.GetComponent<S_PlayerMovement>().ResetLevel();
+        else
+		    playerRef.gameObject.GetComponent<S_PlayerMovement> ().ResetLevel(ref inp);
 
 		// RESET CAMERA
 		camRef.gameObject.GetComponent<S_Camera> ().ResetCamera (gameObject.transform.position);
@@ -143,7 +111,8 @@ public class S_LevelStart : MonoBehaviour {
 		// SETUP PLAYER REFERENCE FOR TURRETS
 		TurretsRef = GameObject.FindGameObjectsWithTag ("Turret");
 		foreach (GameObject k in TurretsRef) {
-			k.GetComponent<S_Turret> ().PlayerRef = playerRef.transform;
+			k.GetComponent<S_Turret> ().SetTarget(playerRef.transform);
+            k.GetComponent<S_Turret>().AngleAssure(k.gameObject.transform.rotation.eulerAngles);
 		}
 
 
@@ -182,7 +151,7 @@ public class S_LevelStart : MonoBehaviour {
 			fastcanvasref.GetComponentInChildren<Image>().sprite = fastfast;
 			BeginTimer = -1;
 			foreach (GameObject k in TurretsRef) {
-				k.GetComponent<S_Turret> ().turretActive = true;
+				k.GetComponent<S_Turret> ().ToggleTurret(true);
 			}
 
 		} else if (BeginFinal) {

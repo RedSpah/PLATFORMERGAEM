@@ -44,7 +44,7 @@ public class S_EndLevel : MonoBehaviour {
 	{
 		UIScript.time++;
 		if (Done && Input.GetKey(KeyCode.A) && !ALock) {
-			GameObject.FindGameObjectWithTag ("StartLevel").GetComponent<S_LevelStart>().ResetLevel(true, ref InpList); 
+			GameObject.FindGameObjectWithTag ("StartLevel").GetComponent<S_LevelStart>().ResetLevel(true, InpList); 
 			Done = false;
 		}
 		if (Done && Input.GetKey (KeyCode.S) && !SLock) {
