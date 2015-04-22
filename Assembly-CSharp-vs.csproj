@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Technical\S_Killzone.cs" />
      <Compile Include="Assets\Scripts\Technical\S_LevelStart.cs" />
      <Compile Include="Assets\Scripts\Technical\S_UISystem.cs" />
+     <Compile Include="Assets\TileWindow.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
