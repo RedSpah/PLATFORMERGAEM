@@ -60,6 +60,15 @@
      <Compile Include="Assets\Scripts\Technical\S_Killzone.cs" />
      <Compile Include="Assets\Scripts\Technical\S_LevelStart.cs" />
      <Compile Include="Assets\Scripts\Technical\S_UISystem.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\ColliderInfo.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\CollisionType.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\Tile.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\TileData.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\TileEditorUtility.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\TileLayer.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\TileMap.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\TileSet.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Class\TileSetManager.cs" />
      <Compile Include="Assets\TileWindow.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

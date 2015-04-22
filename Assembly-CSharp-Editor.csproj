@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapInspector.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapWizard.cs" />
+     <Compile Include="Assets\Tile Editor\Scripts\Editor\TileSetNameWizard.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
