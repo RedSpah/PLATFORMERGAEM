@@ -114,7 +114,14 @@ public class S_Turret : MonoBehaviour {
             gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z);
             RaycastHit2D AimBeam = Physics2D.Raycast(TurretTip.position, transform.right, Mathf.Infinity, CollisionLayer);
             gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z);
-            LaserHit.position = AimBeam.point;
+            if (AimBeam.collider != null)
+            {
+                LaserHit.position = AimBeam.point;
+            }
+            else
+            {
+                LaserHit.position = new Vector2(Mathf.Cos(Mathf.Deg2Rad * gameObject.transform.rotation.eulerAngles.z) * 200 + gameObject.transform.position.x, Mathf.Sin(Mathf.Deg2Rad * gameObject.transform.rotation.eulerAngles.z) * 200 + gameObject.transform.position.y);
+            }
             Laser.SetPosition(0, TurretTip.position);
             Laser.SetPosition(1, LaserHit.position);
             Laser.enabled = AimLaserPresent;
