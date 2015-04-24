@@ -50,6 +50,7 @@
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapInspector.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapWizard.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileSetNameWizard.cs" />
+     <None Include="Assets\Scripts\Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

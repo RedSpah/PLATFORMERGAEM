@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 907f456796a5c854fb34f33b43576f4d
-timeCreated: 1429810062
+timeCreated: 1429891924
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: SpritesheetEntities1_0
     21300002: SpritesheetEntities1_1
+    21300004: SpritesheetEntities1_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -67,6 +68,16 @@ TextureImporter:
         x: 0
         y: 96
         width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetEntities1_2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 96
+        width: 10
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}

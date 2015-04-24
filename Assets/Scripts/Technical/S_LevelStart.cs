@@ -64,10 +64,20 @@ public class S_LevelStart : MonoBehaviour {
 		foreach (GameObject k in TurretsRef) {
 			k.GetComponent<S_Turret> ().ResetLevel();
 		}
-
+		
 		GameObject[] h = GameObject.FindGameObjectsWithTag("Bullet");
 		foreach (GameObject y in h) {
 			Destroy(y);
+		}
+
+		GameObject[] i = GameObject.FindGameObjectsWithTag("Keyblock");
+		foreach (GameObject y in i) {
+			y.GetComponent<S_Keyblock>().ResetLevel();
+		}
+
+		GameObject[] j = GameObject.FindGameObjectsWithTag("Key");
+		foreach (GameObject y in j) {
+			y.GetComponent<S_Key>().ResetLevel();
 		}
 
 		// PREPARE TO BEGIN

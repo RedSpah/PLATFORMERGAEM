@@ -48,6 +48,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Entity\S_Boostable.cs" />
      <Compile Include="Assets\Scripts\Entity\S_BulletLogic.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_Key.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_Keyblock.cs" />
      <Compile Include="Assets\Scripts\Entity\S_PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Rocket.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Turret.cs" />
@@ -70,6 +72,7 @@
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileSet.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileSetManager.cs" />
      <Compile Include="Assets\TileWindow.cs" />
+     <None Include="Assets\Scripts\Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

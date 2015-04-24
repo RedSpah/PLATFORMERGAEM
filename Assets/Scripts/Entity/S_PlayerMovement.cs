@@ -122,7 +122,6 @@ public class S_PlayerMovement : MonoBehaviour {
 
     private float grounddir;
     private RaycastHit2D rch;
-    private Vector3 ray;
 
 	/*------------INPUT----------------*/
 
@@ -169,7 +168,7 @@ public class S_PlayerMovement : MonoBehaviour {
 		Rigid = GetComponent<Rigidbody2D>();
 		ParticleSys = GetComponent<ParticleSystem> ();
 		ParticleSys.enableEmission = false;
-        ray = gameObject.transform.TransformDirection(Vector3.down);
+      
 
 		//UIReference = GameObject.Find ("UI_Canvas").GetComponent<S_UISystem>();
 	}
