@@ -63,6 +63,7 @@ public class S_LevelStart : MonoBehaviour {
 
 		foreach (GameObject k in TurretsRef) {
 			k.GetComponent<S_Turret> ().ResetLevel();
+			//k.GetComponent<S_Turret> ().ResetLevelInit();
 		}
 		
 		GameObject[] h = GameObject.FindGameObjectsWithTag("Bullet");
@@ -144,12 +145,80 @@ public class S_LevelStart : MonoBehaviour {
 				}
 			}
 		}
+
+
+
+		// SETUP COLLISION
+		GameObject[] collision = GameObject.FindGameObjectsWithTag("CollisionBlock");
+		foreach (GameObject s in collision) {
+			s.transform.position = new Vector2 (Mathf.Round (s.transform.position.x), Mathf.Round (s.transform.position.y));
+			PolygonCollider2D singlecol = s.GetComponent<PolygonCollider2D>();
+			s.GetComponent<SpriteRenderer>().enabled = false;
+			Vector2[] pts = s.GetComponent<PolygonCollider2D>().points;
+			for (int t = 0; t < singlecol.points.Length; t++)
+			{
+				pts[t] = new Vector2 ( Mathf.Round(singlecol.points[t].x),  Mathf.Round(singlecol.points[t].y));
+			}
+			s.GetComponent<PolygonCollider2D>().points = pts;
+		}
+
+		// SETUP SPIKES
+		GameObject[] h1 = GameObject.FindGameObjectsWithTag("SpikeD");
+		foreach (GameObject y in h1) {
+			y.AddComponent<S_Spike>();
+			PolygonCollider2D s = y.GetComponent<PolygonCollider2D>();
+			Vector2[] pts = s.points; 
+			for (int t = 0; t < s.points.Length; t++)
+			{
+				pts[t] = new Vector2 ( s.points[t].x,  s.points[t].y - 0.2f);
+			}
+			y.GetComponent<PolygonCollider2D>().points = pts;
+		}
+		GameObject[] h2 = GameObject.FindGameObjectsWithTag("SpikeU");
+		foreach (GameObject y in h2) {
+			y.AddComponent<S_Spike>();
+			PolygonCollider2D s = y.GetComponent<PolygonCollider2D>();
+			Vector2[] pts = s.points; 
+			for (int t = 0; t < s.points.Length; t++)
+			{
+				pts[t] = new Vector2 ( s.points[t].x,  s.points[t].y + 0.2f);
+			}
+			y.GetComponent<PolygonCollider2D>().points = pts;
+		}
+		GameObject[] h3 = GameObject.FindGameObjectsWithTag("SpikeL");
+		foreach (GameObject y in h3) {
+			y.AddComponent<S_Spike>();
+			PolygonCollider2D s = y.GetComponent<PolygonCollider2D>();
+			Vector2[] pts = s.points; 
+			for (int t = 0; t < s.points.Length; t++)
+			{
+				pts[t] = new Vector2 ( s.points[t].x - 0.2f,  s.points[t].y );
+			}
+			y.GetComponent<PolygonCollider2D>().points = pts;
+		}
+		GameObject[] h4 = GameObject.FindGameObjectsWithTag("SpikeR");
+		foreach (GameObject y in h4) {
+			y.AddComponent<S_Spike>();
+			PolygonCollider2D s = y.GetComponent<PolygonCollider2D>();
+			Vector2[] pts = s.points; 
+			for (int t = 0; t < s.points.Length; t++)
+			{
+				pts[t] = new Vector2 ( s.points[t].x + 0.2f,  s.points[t].y );
+			}
+			y.GetComponent<PolygonCollider2D>().points = pts;
+		}
+
+
+
+		// SETUP KEYLOCKS
 		Sprite d = null;
 		GameObject[] i = GameObject.FindGameObjectsWithTag("Keyblock");
 		foreach (GameObject y in i) {
 			if (y.GetComponent<S_Keyblock> () != null) {
 				d = y.GetComponent<S_Keyblock> ().break0;
 			}
+			//y.GetComponent<BoxCollider2D>().offset = new Vector2 (0.05f, -0.05f);
+			y.GetComponent<BoxCollider2D>().size = new Vector2 (0.9f, 1.1f);
 		}
 		foreach (GameObject y in i) {
 			if (y.GetComponent<S_Keyblock> () == null) {
@@ -157,14 +226,6 @@ public class S_LevelStart : MonoBehaviour {
 				y.GetComponent<S_Keyblock>().break0 = d;
 			}
 		}
-
-		GameObject[] h = GameObject.FindGameObjectsWithTag("Spike");
-		foreach (GameObject y in h) {
-			y.AddComponent<S_Spike>();
-		}
-
-		// SETUP
-		//fastcanvasref.GetComponent<Canvas> ().worldCamera = camRef.GetComponent<Camera>();
 
 		// SETUP UI REFERENCES
 		playerRef.gameObject.GetComponent<S_PlayerMovement> ().UIReference = canvasRef.GetComponent<S_UISystem> ();

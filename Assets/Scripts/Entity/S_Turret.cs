@@ -218,6 +218,7 @@ public class S_Turret : MonoBehaviour {
 	{
 		gameObject.transform.rotation = Quaternion.Euler(InitAngle);
 		TimeSeen = 0;
+		CanSee = false;
 	}
 
     public void AngleAssure(Vector3 d)
@@ -228,6 +229,7 @@ public class S_Turret : MonoBehaviour {
 	public void ResetLevelInit()
 	{
         TurretActive = false;
+		CanSee = false;
 	}
 
     public void ToggleTurret(bool state)
