@@ -13,6 +13,7 @@ public class S_UISystem : MonoBehaviour {
 
 	private int min = 0, sec = 0; 
 	private float msec = 0;
+	private bool showdeaths;
 
 	// Use this for initialization
 	void Start () {
@@ -25,17 +26,12 @@ public class S_UISystem : MonoBehaviour {
 			min = Mathf.FloorToInt (time / 3600);
 			sec = Mathf.FloorToInt (time / 60) % 60;
 			msec = Mathf.FloorToInt((time % 60) * 1000/60); 
-			bool a = false, b = false, c = false;
-			if (sec < 10) {a = true;}
-			if (msec < 100) {b = true;}
-			if (msec < 10) {c = true;}
-			UIText.text = " \r\n   Time: " + min + ":"; 
-			if (a) {UIText.text += "0";}
-			UIText.text += sec + ".";
-			if (b) {UIText.text += "0";}
-			if (c) {UIText.text += "0";}
-			UIText.text += msec + "\r\n   Deaths: " + deaths; 
-			//UIText.text = "\r\n \r\n    " + time.ToString ("F0") + "\r\n \r\n    " + "Deaths: " + deaths; 
+
+			UIText.text = " \r\n   Time: " + GetTimeString(min, sec, msec); 
+			if (showdeaths)
+			{
+				UIText.text += "\r\n   Deaths: " + deaths; 
+			}
 			if (replaying && !endlevel)
 			{
 				UIText.text += " \r\n  \r\n  \r\n     REPLAYING";
@@ -49,16 +45,11 @@ public class S_UISystem : MonoBehaviour {
 		if (endlevel) {
 			UIText.fontSize = 48;
 			UIText.color = new Color(255,0,0);
-			bool a = false, b = false, c = false;
-			if (sec < 10) {a = true;}
-			if (msec < 100) {b = true;}
-			if (msec < 10) {c = true;}
-			UIText.text = " \r\n   Time: " + min + ":"; 
-			if (a) {UIText.text += "0";}
-			UIText.text += sec + ".";
-			if (b) {UIText.text += "0";}
-			if (c) {UIText.text += "0";}
-			UIText.text += msec + "\r\n   Deaths: " + deaths; 
+			UIText.text = " \r\n   Time: " + GetTimeString(min, sec, msec);  
+			if (showdeaths)
+			{
+				UIText.text +=  "\r\n   Deaths: " + deaths; 
+			}
 			UIText.text += " \r\n \r\n \r\n PRESS [A] TO REPLAY \r\n PRESS [S] TO RETRY";
 			endlevel = false;
 		}
@@ -71,9 +62,10 @@ public class S_UISystem : MonoBehaviour {
 		replaying = true;
 	}
 	
-	public void ResetLevel()
+	public void ResetLevel(bool y)
 	{
 		deaths = 0;
+		showdeaths = y;
 		time = 0;
 		UIText.fontSize = 14;
 		UIText.color = new Color(255,255,255);
@@ -81,5 +73,27 @@ public class S_UISystem : MonoBehaviour {
 		replaying = false;
 		endlevel = false;
 		running = false;
+	}
+
+	public void BeginLevel()
+	{
+		deaths = 0;
+	}
+
+	public string GetTimeString(int m, int s, float ms)
+	{
+		string y = "";
+		bool a = false, b = false, c = false;
+		if (sec < 10) {a = true;}
+		if (msec < 100) {b = true;}
+		if (msec < 10) {c = true;}
+		y += m;
+		y += ":";
+		if (a) {y += "0";}
+		y += s + ".";
+		if (b) {y += "0";}
+		if (c) {y += "0";}
+		y += ms;
+		return y;
 	}
 }

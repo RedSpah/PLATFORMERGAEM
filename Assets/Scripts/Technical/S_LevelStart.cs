@@ -31,7 +31,7 @@ public class S_LevelStart : MonoBehaviour {
 	public int CamNum = 0;
 	public float FirstCamBufX, FirstCamBufY, FirstCamZoom, FirstCamSmooth;
 	public bool FirstCamFollowX, FirstCamFollowY;
-
+	private bool showdeaths = false;
 	void Start () {
 		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 
@@ -59,7 +59,7 @@ public class S_LevelStart : MonoBehaviour {
 		camRef.gameObject.GetComponent<S_Camera> ().NextFocus(FirstFocusRef,FirstCamFollowX,FirstCamFollowY,FirstCamBufX,FirstCamBufY,FirstCamSmooth,FirstCamZoom);
 
 		// RESET UI
-		canvasRef.GetComponent<S_UISystem>().ResetLevel();
+		canvasRef.GetComponent<S_UISystem>().ResetLevel(showdeaths);
 
 		foreach (GameObject k in TurretsRef) {
 			k.GetComponent<S_Turret> ().ResetLevel();
@@ -117,6 +117,12 @@ public class S_LevelStart : MonoBehaviour {
 			FirstFocusRef = playerRef.transform;
 		}
 
+		GameObject[] allch = GameObject.FindGameObjectsWithTag("Checkpoint");
+		if (allch.Length == 0) {
+			showdeaths = false;
+		} else {
+			showdeaths = true;
+		}
 
 		// SETUP PLAYER REFERENCE FOR TURRETS
 		TurretsRef = GameObject.FindGameObjectsWithTag ("Turret");
@@ -137,6 +143,24 @@ public class S_LevelStart : MonoBehaviour {
 					y.GetComponent<S_CamTrigger>().FocusRef = playerRef;
 				}
 			}
+		}
+		Sprite d = null;
+		GameObject[] i = GameObject.FindGameObjectsWithTag("Keyblock");
+		foreach (GameObject y in i) {
+			if (y.GetComponent<S_Keyblock> () != null) {
+				d = y.GetComponent<S_Keyblock> ().break0;
+			}
+		}
+		foreach (GameObject y in i) {
+			if (y.GetComponent<S_Keyblock> () == null) {
+				y.AddComponent<S_Keyblock> ();
+				y.GetComponent<S_Keyblock>().break0 = d;
+			}
+		}
+
+		GameObject[] h = GameObject.FindGameObjectsWithTag("Spike");
+		foreach (GameObject y in h) {
+			y.AddComponent<S_Spike>();
 		}
 
 		// SETUP

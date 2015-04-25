@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: da1911876e6c8da4086886887170f75b
-timeCreated: 1429871167
+timeCreated: 1429951842
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
+    8900000: generatedCubemap
     21300000: SpritesheetGround1_0
     21300002: SpritesheetGround1_1
     21300004: SpritesheetGround1_2
@@ -43,16 +44,28 @@ TextureImporter:
     21300072: SpritesheetGround1_36
     21300074: SpritesheetGround1_37
     21300076: SpritesheetGround1_38
+    21300078: SpritesheetGround1_39
+    21300080: SpritesheetGround1_40
+    21300082: SpritesheetGround1_41
+    21300084: SpritesheetGround1_42
+    21300086: SpritesheetGround1_43
+    21300088: SpritesheetGround1_44
+    21300090: SpritesheetGround1_45
+    21300092: SpritesheetGround1_46
+    21300094: SpritesheetGround1_47
+    21300096: SpritesheetGround1_48
+    21300098: SpritesheetGround1_49
+    21300100: SpritesheetGround1_50
   serializedVersion: 2
   mipmaps:
-    mipMapMode: 0
+    mipMapMode: 1
     enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
-    mipMapFadeDistanceStart: 1
-    mipMapFadeDistanceEnd: 3
+    mipMapFadeDistanceStart: 0
+    mipMapFadeDistanceEnd: 2
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
@@ -66,25 +79,25 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: 4
-  maxTextureSize: 2048
+  maxTextureSize: 128
   textureSettings:
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapMode: 0
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
   alphaIsTransparency: 1
-  textureType: 8
+  textureType: 5
   buildTargetSettings: []
   spriteSheet:
     sprites:
@@ -128,16 +141,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 112
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: SpritesheetGround1_5
       rect:
         serializedVersion: 2
@@ -151,8 +154,8 @@ TextureImporter:
     - name: SpritesheetGround1_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 96
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -161,7 +164,7 @@ TextureImporter:
     - name: SpritesheetGround1_7
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 96
         width: 16
         height: 16
@@ -171,7 +174,7 @@ TextureImporter:
     - name: SpritesheetGround1_8
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 96
         width: 16
         height: 16
@@ -181,17 +184,7 @@ TextureImporter:
     - name: SpritesheetGround1_9
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_10
-      rect:
-        serializedVersion: 2
-        x: 64
+        x: 32
         y: 96
         width: 16
         height: 16
@@ -211,8 +204,8 @@ TextureImporter:
     - name: SpritesheetGround1_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
+        x: 96
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -221,7 +214,7 @@ TextureImporter:
     - name: SpritesheetGround1_13
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 80
         width: 16
         height: 16
@@ -231,7 +224,7 @@ TextureImporter:
     - name: SpritesheetGround1_14
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 80
         width: 16
         height: 16
@@ -241,7 +234,7 @@ TextureImporter:
     - name: SpritesheetGround1_15
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 80
         width: 16
         height: 16
@@ -251,17 +244,7 @@ TextureImporter:
     - name: SpritesheetGround1_16
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_17
-      rect:
-        serializedVersion: 2
-        x: 80
+        x: 48
         y: 80
         width: 16
         height: 16
@@ -271,8 +254,8 @@ TextureImporter:
     - name: SpritesheetGround1_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 80
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -281,8 +264,8 @@ TextureImporter:
     - name: SpritesheetGround1_19
       rect:
         serializedVersion: 2
-        x: 16
-        y: 64
+        x: 96
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -291,7 +274,7 @@ TextureImporter:
     - name: SpritesheetGround1_20
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 64
         width: 16
         height: 16
@@ -301,7 +284,7 @@ TextureImporter:
     - name: SpritesheetGround1_21
       rect:
         serializedVersion: 2
-        x: 48
+        x: 16
         y: 64
         width: 16
         height: 16
@@ -311,7 +294,7 @@ TextureImporter:
     - name: SpritesheetGround1_22
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 64
         width: 16
         height: 16
@@ -321,18 +304,8 @@ TextureImporter:
     - name: SpritesheetGround1_23
       rect:
         serializedVersion: 2
-        x: 80
+        x: 48
         y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_24
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -341,8 +314,8 @@ TextureImporter:
     - name: SpritesheetGround1_25
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
+        x: 80
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -351,8 +324,8 @@ TextureImporter:
     - name: SpritesheetGround1_26
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
+        x: 96
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -361,7 +334,7 @@ TextureImporter:
     - name: SpritesheetGround1_27
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -371,7 +344,7 @@ TextureImporter:
     - name: SpritesheetGround1_28
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 48
         width: 16
         height: 16
@@ -381,7 +354,7 @@ TextureImporter:
     - name: SpritesheetGround1_29
       rect:
         serializedVersion: 2
-        x: 80
+        x: 32
         y: 48
         width: 16
         height: 16
@@ -391,44 +364,14 @@ TextureImporter:
     - name: SpritesheetGround1_30
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_31
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_32
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_33
-      rect:
-        serializedVersion: 2
         x: 48
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_34
+    - name: SpritesheetGround1_37
       rect:
         serializedVersion: 2
         x: 64
@@ -438,7 +381,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_35
+    - name: SpritesheetGround1_38
       rect:
         serializedVersion: 2
         x: 80
@@ -448,31 +391,101 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_36
+    - name: SpritesheetGround1_39
       rect:
         serializedVersion: 2
-        x: 0
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetGround1_40
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetGround1_42
+      rect:
+        serializedVersion: 2
+        x: 64
         y: 16
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_37
+    - name: SpritesheetGround1_43
       rect:
         serializedVersion: 2
-        x: 16
+        x: 80
         y: 16
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetGround1_38
+    - name: SpritesheetGround1_44
       rect:
         serializedVersion: 2
-        x: 32
+        x: 96
         y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetGround1_45
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetGround1_47
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetGround1_48
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetGround1_49
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetGround1_50
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
         width: 16
         height: 16
       alignment: 0

@@ -1,23 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Entity\S_Keyblock.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Technical\S_LevelStart.cs">
     <Files>
-      <File FileName="Assets\Scripts\Entity\S_Keyblock.cs" Line="113" Column="26" />
-      <File FileName="Assets\Scripts\Entity\S_Turret.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Technical\S_EndLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\S_Rocket.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\S_Key.cs" Line="21" Column="4" />
-      <File FileName="Assets\Scripts\Technical\S_LevelStart.cs" Line="184" Column="2" />
+      <File FileName="Assets\Scripts\Technical\S_LevelStart.cs" Line="62" Column="61" />
+      <File FileName="Assets\Scripts\Entity\S_Key.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Technical\S_UISystem.cs" Line="48" Column="60" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="Entity" expanded="True">
-                <Node name="S_Keyblock.cs" selected="True" />
+              <Node name="Entity" expanded="True" />
+              <Node name="Technical" expanded="True">
+                <Node name="S_LevelStart.cs" selected="True" />
               </Node>
-              <Node name="Technical" expanded="True" />
             </Node>
           </Node>
         </State>

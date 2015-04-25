@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 067e20c4d140df94b934e45244beb452
-timeCreated: 1429886317
+timeCreated: 1429953553
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,15 @@ TextureImporter:
     21300012: SpritesheetSpecial_6
     21300014: SpritesheetSpecial_7
     21300016: SpritesheetSpecial_8
+    21300018: SpritesheetSpecial_9
+    21300020: SpritesheetSpecial_10
+    21300022: SpritesheetSpecial_11
+    21300024: SpritesheetSpecial_12
+    21300026: SpritesheetSpecial_13
+    21300028: SpritesheetSpecial_14
+    21300030: SpritesheetSpecial_15
+    21300032: SpritesheetSpecial_16
+    21300034: SpritesheetSpecial_17
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -101,8 +110,8 @@ TextureImporter:
     - name: SpritesheetSpecial_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 64
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -111,8 +120,8 @@ TextureImporter:
     - name: SpritesheetSpecial_5
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
+        x: 80
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -121,8 +130,8 @@ TextureImporter:
     - name: SpritesheetSpecial_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 96
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -131,14 +140,24 @@ TextureImporter:
     - name: SpritesheetSpecial_7
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
+        x: 112
+        y: 112
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SpritesheetSpecial_8
+    - name: SpritesheetSpecial_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetSpecial_17
       rect:
         serializedVersion: 2
         x: 0

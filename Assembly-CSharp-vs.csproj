@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Technical\S_EntityManager.cs" />
      <Compile Include="Assets\Scripts\Technical\S_Killzone.cs" />
      <Compile Include="Assets\Scripts\Technical\S_LevelStart.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_Spike.cs" />
      <Compile Include="Assets\Scripts\Technical\S_UISystem.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\ColliderInfo.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\CollisionType.cs" />
