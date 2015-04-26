@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Entity\S_Boostable.cs" />
      <Compile Include="Assets\Scripts\Entity\S_BulletLogic.cs" />
+     <Compile Include="Assets\Scripts\Entity\S_Door.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Key.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Keyblock.cs" />
      <Compile Include="Assets\Scripts\Entity\S_PlayerMovement.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\Technical\S_EntityManager.cs" />
      <Compile Include="Assets\Scripts\Technical\S_Killzone.cs" />
      <Compile Include="Assets\Scripts\Technical\S_LevelStart.cs" />
+     <Compile Include="Assets\Scripts\Technical\S_SpawnManager.cs" />
      <Compile Include="Assets\Scripts\Technical\S_Spike.cs" />
      <Compile Include="Assets\Scripts\Technical\S_UISystem.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\ColliderInfo.cs" />

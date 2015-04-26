@@ -8,6 +8,7 @@ public class S_EndLevel : MonoBehaviour {
 	public bool Done = false;
 	private bool ALock = true;
 	private bool SLock = true;
+	private bool DLock = true;
 	public S_UISystem UIScript;
 
 	void Start () {
@@ -35,7 +36,7 @@ public class S_EndLevel : MonoBehaviour {
 			Done = true;
 			ALock = Input.GetKey(KeyCode.A);
 			SLock = Input.GetKey(KeyCode.S);
-
+			DLock = Input.GetKey(KeyCode.D);
 
 		}
 	}
@@ -50,6 +51,9 @@ public class S_EndLevel : MonoBehaviour {
 		if (Done && Input.GetKey (KeyCode.S) && !SLock) {
 			Done = false;
 			GameObject.FindGameObjectWithTag ("StartLevel").GetComponent<S_LevelStart>().ResetLevel(true);
+		}
+		if (Done && Input.GetKey (KeyCode.D) && !DLock) {
+			Application.LoadLevel(0);
 		}
 		ALock = Input.GetKey(KeyCode.A);
 		SLock = Input.GetKey(KeyCode.S);

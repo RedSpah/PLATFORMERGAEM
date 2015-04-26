@@ -24,6 +24,7 @@ public class S_LevelStart : MonoBehaviour {
 	private GameObject playerRef;
 	private GameObject camRef;
 	private Canvas canvasRef;
+	private bool huboverride = false;
 
 	private int BeginTimer = 0;
 	private Transform FirstFocusRef;
@@ -35,10 +36,10 @@ public class S_LevelStart : MonoBehaviour {
 	void Start () {
 		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 
-
-		SetupAll ();
-		ResetLevel (true);
-
+		if (Application.loadedLevel != 0 || GameObject.FindGameObjectWithTag ("SpawnManager").GetComponent<S_SpawnManager> ().returnposition == new Vector2 (0, 0)) {
+			SetupAll ();
+			ResetLevel (true);
+		} 
 	}
 
 	
@@ -98,10 +99,22 @@ public class S_LevelStart : MonoBehaviour {
 	void SetupAll()
 	{
 		// BASIC SETUP
-		fastcanvasref 	= Instantiate (fastcanvasPrefabRef);
-		playerRef 		= (GameObject) Instantiate (PlayerPrefabReference, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, 0), new Quaternion (0, 0, 0, 1));
-		camRef 			= Instantiate (CameraPrefabReference);
-		canvasRef 		= Instantiate (CanvasPrefabReference);
+		fastcanvasref = Instantiate (fastcanvasPrefabRef);
+		if (!huboverride) {
+			Debug.Log("player spawned naturally");
+			playerRef = (GameObject)Instantiate (PlayerPrefabReference, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, 0), new Quaternion (0, 0, 0, 1));
+		} else {
+			playerRef.GetComponent<S_PlayerMovement>().SetStartPos(playerRef.transform.position);
+			Debug.Log (playerRef.transform.position);
+		}
+		GameObject f = GameObject.FindGameObjectWithTag("MainCamera");
+		if (f != null) {
+			f.AddComponent<S_Camera> ();
+			camRef = f;
+		} else {
+			camRef = Instantiate (CameraPrefabReference);
+		}
+		canvasRef = Instantiate (CanvasPrefabReference);
 
 
 		// SETUP FIRST FOCUS FOR THE CAMERA
@@ -229,11 +242,23 @@ public class S_LevelStart : MonoBehaviour {
 
 		// SETUP UI REFERENCES
 		playerRef.gameObject.GetComponent<S_PlayerMovement> ().UIReference = canvasRef.GetComponent<S_UISystem> ();
-		playerRef.gameObject.GetComponent<S_PlayerMovement> ().SetStartPos (gameObject.transform.position);
+		if (!huboverride) {
+			playerRef.gameObject.GetComponent<S_PlayerMovement> ().SetStartPos (gameObject.transform.position);
+		}
 		GameObject.FindGameObjectWithTag ("EndLevel").GetComponent<S_EndLevel> ().UIScript = canvasRef.GetComponent<S_UISystem> ();
 
 
 
+	}
+
+	public void HubSpawnOverride(GameObject pla)
+	{
+		playerRef = pla;
+		playerRef.GetComponent<S_PlayerMovement> ().SetStartPos (playerRef.transform.position);
+		Debug.Log (playerRef.transform.position);
+		huboverride = true;
+		SetupAll ();
+		ResetLevel (false);
 	}
 
 

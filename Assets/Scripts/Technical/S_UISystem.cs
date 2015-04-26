@@ -50,7 +50,7 @@ public class S_UISystem : MonoBehaviour {
 			{
 				UIText.text +=  "\r\n   Deaths: " + deaths; 
 			}
-			UIText.text += " \r\n \r\n \r\n PRESS [A] TO REPLAY \r\n PRESS [S] TO RETRY";
+			UIText.text += " \r\n \r\n \r\n PRESS [A] TO REPLAY \r\n PRESS [S] TO RETRY \r\n PRESS [D] TO RETURN TO HUB";
 			endlevel = false;
 		}
 	}

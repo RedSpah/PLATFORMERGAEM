@@ -58,6 +58,7 @@ public class S_Camera : MonoBehaviour {
 		BufferY = 0;
 		Smoothness = 0;
 		Zoom = 5;
+		cam = gameObject.GetComponent<Camera> ();
 	}
 
 	void OnPostRender()

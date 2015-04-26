@@ -29,7 +29,9 @@ public class S_Turret : MonoBehaviour {
     [SerializeField]
     private float LaserOffset = 0;
 
-    [SerializeField]
+	[SerializeField]
+	private bool PrimitiveTurret = false;
+	[SerializeField]
     private bool AimThroughWalls = false;
     [SerializeField]
     private bool FireAtWalls = false;
@@ -95,6 +97,9 @@ public class S_Turret : MonoBehaviour {
         Laser.material = AimMaterial;
         Laser.enabled = true;
         Laser.useWorldSpace = true;
+		if (PrimitiveTurret) {
+			FireAtWalls = true;
+		}
 
 		CollisionLayer += EndLevel;
 		PlayerLayer += CollisionLayer;
@@ -104,41 +109,43 @@ public class S_Turret : MonoBehaviour {
 	void FixedUpdate () {
         if (TurretActive)
         {
+			if (!PrimitiveTurret)
+			{
+            	// If the target can be seen
+            	float len = Vector2.Distance(gameObject.transform.position, Target.transform.position);
+            	RaycastHit2D SeeBeam = Physics2D.Raycast(gameObject.transform.position, Target.transform.position - gameObject.transform.position, len, CollisionLayer);
+            	CanSee = (SeeBeam.collider == null);
 
-            // If the target can be seen
-            float len = Vector2.Distance(gameObject.transform.position, Target.transform.position);
-            RaycastHit2D SeeBeam = Physics2D.Raycast(gameObject.transform.position, Target.transform.position - gameObject.transform.position, len, CollisionLayer);
-            CanSee = (SeeBeam.collider == null);
-
-            // Aim beam and targeting
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z);
-            RaycastHit2D AimBeam = Physics2D.Raycast(TurretTip.position, transform.right, Mathf.Infinity, CollisionLayer);
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z);
-            if (AimBeam.collider != null)
-            {
-                LaserHit.position = AimBeam.point;
-            }
-            else
-            {
-                LaserHit.position = new Vector2(Mathf.Cos(Mathf.Deg2Rad * gameObject.transform.rotation.eulerAngles.z) * 200 + gameObject.transform.position.x, Mathf.Sin(Mathf.Deg2Rad * gameObject.transform.rotation.eulerAngles.z) * 200 + gameObject.transform.position.y);
-            }
-            Laser.SetPosition(0, TurretTip.position);
-            Laser.SetPosition(1, LaserHit.position);
-            Laser.enabled = AimLaserPresent;
+            	// Aim beam and targeting
+           		gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z);
+           		RaycastHit2D AimBeam = Physics2D.Raycast(TurretTip.position, transform.right, Mathf.Infinity, CollisionLayer);
+            	gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z);
+            	if (AimBeam.collider != null)
+            	{
+                	LaserHit.position = AimBeam.point;
+            	}
+            	else
+            	{
+                	LaserHit.position = new Vector2(Mathf.Cos(Mathf.Deg2Rad * gameObject.transform.rotation.eulerAngles.z) * 200 + gameObject.transform.position.x, Mathf.Sin(Mathf.Deg2Rad * gameObject.transform.rotation.eulerAngles.z) * 200 + gameObject.transform.position.y);
+            	}
+            	Laser.SetPosition(0, TurretTip.position);
+            	Laser.SetPosition(1, LaserHit.position);
+            	Laser.enabled = AimLaserPresent;
 
 
-            // Turret rotation
-            if ((CanSee || AimThroughWalls || !(!TurnWhileLaserIsActive && LaserTimer > LaserCooldown)) && Tracking)
-            {
-                Vector3 lookDirection = Target.transform.position - gameObject.transform.position;
-                float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, targetRotation, TurnSpeed);
-            }
-            else if (!Tracking)
-            {
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z + RotationSpeed);
-            }
+        	    // Turret rotation
+	            if ((CanSee || AimThroughWalls || !(!TurnWhileLaserIsActive && LaserTimer > LaserCooldown)) && Tracking)
+    	        {
+            	    Vector3 lookDirection = Target.transform.position - gameObject.transform.position;
+                	float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+                	Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                	transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, targetRotation, TurnSpeed);
+            	}
+  	  	        else if (!Tracking)
+        	    {
+            	    gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z + RotationSpeed);
+				}
+			}
 
             // Increase subroutine timers
             if (CanSee || FireAtWalls)
@@ -194,7 +201,7 @@ public class S_Turret : MonoBehaviour {
                     LaserTimer = 0;
                 }
             }
-            else
+            else if (AimLaserPresent)
             {
                 Laser.SetColors(AimColorBegin, AimColorEnd);
                 Laser.SetWidth(AimWidthBegin, AimWidthEnd);
@@ -219,6 +226,8 @@ public class S_Turret : MonoBehaviour {
 		gameObject.transform.rotation = Quaternion.Euler(InitAngle);
 		TimeSeen = 0;
 		CanSee = false;
+		BulletTimer = 0;
+		LaserTimer = 0;
 	}
 
     public void AngleAssure(Vector3 d)

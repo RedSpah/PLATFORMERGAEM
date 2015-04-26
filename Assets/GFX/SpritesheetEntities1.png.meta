@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 907f456796a5c854fb34f33b43576f4d
-timeCreated: 1429891924
+timeCreated: 1430042381
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: SpritesheetEntities1_0
     21300002: SpritesheetEntities1_1
     21300004: SpritesheetEntities1_2
+    21300006: SpritesheetEntities1_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,7 +61,7 @@ TextureImporter:
         width: 26
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: SpritesheetEntities1_1
       rect:
@@ -70,7 +71,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: SpritesheetEntities1_2
       rect:
@@ -80,7 +81,17 @@ TextureImporter:
         width: 10
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpritesheetEntities1_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
