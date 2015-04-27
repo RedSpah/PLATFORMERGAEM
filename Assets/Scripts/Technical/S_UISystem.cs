@@ -84,9 +84,9 @@ public class S_UISystem : MonoBehaviour {
 	{
 		string y = "";
 		bool a = false, b = false, c = false;
-		if (sec < 10) {a = true;}
-		if (msec < 100) {b = true;}
-		if (msec < 10) {c = true;}
+		if (s < 10) {a = true;}
+		if (ms < 100) {b = true;}
+		if (ms < 10) {c = true;}
 		y += m;
 		y += ":";
 		if (a) {y += "0";}
