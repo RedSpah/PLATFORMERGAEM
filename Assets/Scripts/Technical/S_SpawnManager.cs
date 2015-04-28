@@ -9,6 +9,10 @@ public class S_SpawnManager : MonoBehaviour {
 
 	public GameObject playerprefabref;
 
+	[SerializeField]
+	const int NoOfLevels = 5;
+	int[] leveltime = new int[NoOfLevels];
+
 	struct Level
 	{
 		public Vector2 position;
@@ -20,6 +24,24 @@ public class S_SpawnManager : MonoBehaviour {
 		}
 	}
 
+	[Serializable]
+	public struct LevelTime
+	{
+		public int DTime;
+		public int DPTime;
+		public int CTime;
+		public int CPTime;
+		public int BTime;
+		public int BPTime;
+		public int AMTime;
+		public int ATime;
+		public int APTime;
+		public int SMTime;
+		public int STime;
+		public int SSTime;
+	}
+	[SerializeField]
+	public LevelTime[] LvTimes = new LevelTime[NoOfLevels];
 	Predicate<Level> predicate = FindLevelByIndex;
 
 	private static bool FindLevelByIndex(Level lv)
@@ -55,7 +77,7 @@ public class S_SpawnManager : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
+
 	void OnLevelWasLoaded (int level) {
 		if (level != 0) {
 			leveltofind = level;
@@ -73,5 +95,23 @@ public class S_SpawnManager : MonoBehaviour {
 		}
 	}
 
+
+	void Awake()
+	{
+
+		for(int i = 0; i < NoOfLevels; i++)
+		{
+			if (!PlayerPrefs.HasKey("LevelTime" + i))
+			{
+				PlayerPrefs.SetInt("LevelTime" + i, -1); 
+			}
+
+			leveltime[i] = PlayerPrefs.GetInt("LevelTime" + i);
+		}
+		foreach(GameObject d in GameObject.FindGameObjectsWithTag("Door"))
+		{
+			d.GetComponent<S_Door>().GetTimesRef(ref leveltime);
+		}
+	}
 
 }

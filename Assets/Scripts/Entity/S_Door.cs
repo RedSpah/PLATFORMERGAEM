@@ -225,6 +225,20 @@ public class S_Door : MonoBehaviour {
 		txt.text = GetUpText ();
 	}
 
+	public void GetTimesRef(ref int[] h)
+	{
+		try{
+		NormalLevelTime = h[NormalLevelIndex];
+		HardLevelTime = h[HardLevelIndex];
+		ExpertLevelTime = h[ExpertLevelIndex];
+		InsaneLevelTime = h[InsaneLevelIndex];
+		}
+		catch(System.IndexOutOfRangeException)
+		{
+			Debug.LogError ("you dun gooofed again");
+		}
+	}
+
 	void OnTriggerExit2D(Collider2D other)
 	{
 		showup = false;

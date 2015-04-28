@@ -39,7 +39,10 @@ public class S_LevelStart : MonoBehaviour {
 		if (Application.loadedLevel != 0 || GameObject.FindGameObjectWithTag ("SpawnManager").GetComponent<S_SpawnManager> ().returnposition == new Vector2 (0, 0)) {
 			SetupAll ();
 			ResetLevel (true);
-		} 
+		} else if(Application.loadedLevel == 0){
+			SetupAll ();
+			ResetLevel (false);
+		}
 	}
 
 	
