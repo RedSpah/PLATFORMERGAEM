@@ -33,16 +33,27 @@ public class S_LevelStart : MonoBehaviour {
 	public float FirstCamBufX, FirstCamBufY, FirstCamZoom, FirstCamSmooth;
 	public bool FirstCamFollowX, FirstCamFollowY;
 	private bool showdeaths = false;
+	private bool uidisable = false;
 
 	void Start () {
 		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-
-		if (Application.loadedLevel != 0 || GameObject.FindGameObjectWithTag ("SpawnManager").GetComponent<S_SpawnManager> ().returnposition == new Vector2 (0, 0)) {
+		if (GameObject.FindGameObjectWithTag ("SpawnManager") == null)
+		{
 			SetupAll ();
 			ResetLevel (true);
-		} else if(Application.loadedLevel == 0){
-			SetupAll ();
-			ResetLevel (false);
+			Debug.Log ("goes for debug");
+		}
+		else {
+			if (Application.loadedLevel != 0) {
+				SetupAll ();
+				ResetLevel (true);
+				Debug.Log ("goes for lies");
+			} else if(Application.loadedLevel == 0){
+				uidisable = true;
+				SetupAll ();
+				ResetLevel (false);
+				Debug.Log ("goes for truth");
+			}
 		}
 	}
 
@@ -103,7 +114,12 @@ public class S_LevelStart : MonoBehaviour {
 	void SetupAll()
 	{
 		// BASIC SETUP
+
 		fastcanvasref = Instantiate (fastcanvasPrefabRef);
+		if (uidisable)
+		{
+			fastcanvasref.GetComponent<Canvas>().enabled = false;	
+		}
 		if (!huboverride) {
 			Debug.Log("player spawned naturally");
 			playerRef = (GameObject)Instantiate (PlayerPrefabReference, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, 0), new Quaternion (0, 0, 0, 1));
@@ -119,7 +135,10 @@ public class S_LevelStart : MonoBehaviour {
 			camRef = Instantiate (CameraPrefabReference);
 		}
 		canvasRef = Instantiate (CanvasPrefabReference);
-
+		if (uidisable)
+		{
+			canvasRef.GetComponent<Canvas>().enabled = false;
+		}
 
 		// SETUP FIRST FOCUS FOR THE CAMERA
 		GameObject[] allfoc = GameObject.FindGameObjectsWithTag ("CameraFocus");
@@ -269,8 +288,11 @@ public class S_LevelStart : MonoBehaviour {
 	void FixedUpdate()
 	{
 		if (BeginTimer == 0) {
+			if (!uidisable)
+			{
 			canvasRef.GetComponent<S_UISystem> ().running = true;
 			canvasRef.GetComponent<S_UISystem> ().time = 0;
+			}
 			playerRef.gameObject.GetComponent<S_PlayerMovement> ().Running = true;
 			fastcanvasref.GetComponentInChildren<Image>().sprite = fastfast;
 			BeginTimer = -1;

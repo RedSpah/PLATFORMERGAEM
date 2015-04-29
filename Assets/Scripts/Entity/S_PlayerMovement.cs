@@ -503,7 +503,10 @@ public class S_PlayerMovement : MonoBehaviour {
 			JumpKeylock = K_Jump;
 		}
 	
-
+		if (DashesLeft == 0 && TouchingWall)
+		{
+			DashesLeft = MaxDashes;
+		}
 
 		// Cooldown for Wallkick effect
 		if (WallkickComebackTimer > 0) {

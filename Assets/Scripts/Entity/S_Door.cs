@@ -56,7 +56,7 @@ public class S_Door : MonoBehaviour {
 		int k = Mathf.Max(NormalLevelName.Length, HardLevelName.Length, ExpertLevelName.Length, InsaneLevelName.Length);
 		size = k;
 		string output = "";
-		output += Helper.ColorString(StageName,180,180,0) + Helper.LineBreak; 
+		output += Helper.ColorString(StageName,230,230,0) + Helper.LineBreak; 
 		output += Helper.ColorString("Select Level", 90,90,255) + Helper.LineBreak;
 		for(int i = 0; i < NUM_OF_TIERS; i++)
 		{

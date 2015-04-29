@@ -59,11 +59,20 @@ public class S_SpawnManager : MonoBehaviour {
 		GameObject[] doorlist = GameObject.FindGameObjectsWithTag("Door");
 		foreach (GameObject f in doorlist) {
 			LevelIndex.Add(new Level(f.transform.position, f.GetComponent<S_Door>().NormalLevelIndex));
+			LevelIndex.Add(new Level(f.transform.position, f.GetComponent<S_Door>().HardLevelIndex));
+			LevelIndex.Add(new Level(f.transform.position, f.GetComponent<S_Door>().ExpertLevelIndex));
+			LevelIndex.Add(new Level(f.transform.position, f.GetComponent<S_Door>().InsaneLevelIndex));
 		}
 	}
 	
 
 	void OnLevelWasLoaded (int level) {
+
+		GameObject[] allsnap = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
+		foreach(GameObject f in allsnap)
+		{
+			f.transform.position = new Vector3(Helper.HalfRound (f.transform.position.x), Helper.HalfRound (f.transform.position.y), Helper.HalfRound (f.transform.position.z));
+		}
 
 		if (level != 0) {
 			leveltofind = level;
@@ -84,6 +93,8 @@ public class S_SpawnManager : MonoBehaviour {
 
 	void Awake()
 	{
+
+
 
 		for(int i = 0; i < NoOfLevels; i++)
 		{

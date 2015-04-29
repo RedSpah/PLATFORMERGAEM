@@ -182,6 +182,12 @@ namespace RedHelp
 			return end;
 		}
 
+		public static float HalfRound(float f)
+		{
+			return (Mathf.Round(f*2)/2);
+		}
+
+
 	}
 }
 
