@@ -24,20 +24,19 @@ public class S_EndLevel : MonoBehaviour {
 			other.GetComponent<S_PlayerMovement>().GetInput = false;
 			other.GetComponent<S_PlayerMovement>().ReplayMode = false;
 			S_Camera CamScrRef = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<S_Camera>();
-			CamScrRef.FollowX = true;
-			CamScrRef.FollowY = true;
-			CamScrRef.BufferX = 0;
-			CamScrRef.BufferY = 0;
-			CamScrRef.Zoom = 5;
-			CamScrRef.Smoothness = 0.32f;
-			CamScrRef.focus = other.transform;
+			CamScrRef.ResetCamera (gameObject.transform.position);
 			UIScript.endlevel = true;
 			UIScript.running = false;
 			Done = true;
 			ALock = Input.GetKey(KeyCode.A);
 			SLock = Input.GetKey(KeyCode.S);
 			DLock = Input.GetKey(KeyCode.D);
-
+			int time;
+			time = UIScript.time;
+			if (PlayerPrefs.GetInt("LevelTime" + Application.loadedLevel) == -1 || PlayerPrefs.GetInt("LevelTime" + Application.loadedLevel) > time)
+			{
+				PlayerPrefs.SetInt("LevelTime" + Application.loadedLevel, time);
+			}
 		}
 	}
 

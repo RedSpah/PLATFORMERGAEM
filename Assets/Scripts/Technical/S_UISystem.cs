@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using RedHelp;
 
 public class S_UISystem : MonoBehaviour {
 
@@ -10,9 +11,7 @@ public class S_UISystem : MonoBehaviour {
 	[SerializeField] private Text UIText;
 	public bool endlevel = false;
 	private bool replaying = false;
-
-	private int min = 0, sec = 0; 
-	private float msec = 0;
+	
 	private bool showdeaths;
 
 	// Use this for initialization
@@ -23,11 +22,8 @@ public class S_UISystem : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (running) {
-			min = Mathf.FloorToInt (time / 3600);
-			sec = Mathf.FloorToInt (time / 60) % 60;
-			msec = Mathf.FloorToInt((time % 60) * 1000/60); 
 
-			UIText.text = " \r\n   Time: " + GetTimeString(min, sec, msec); 
+			UIText.text = " \r\n   Time: " + Helper.RenderTime(time); 
 			if (showdeaths)
 			{
 				UIText.text += "\r\n   Deaths: " + deaths; 
@@ -43,9 +39,9 @@ public class S_UISystem : MonoBehaviour {
 
 		}
 		if (endlevel) {
-			UIText.fontSize = 48;
+			UIText.fontSize = 26;
 			UIText.color = new Color(255,0,0);
-			UIText.text = " \r\n   Time: " + GetTimeString(min, sec, msec);  
+			UIText.text = " \r\n   Time: " + Helper.RenderTime(time); 
 			if (showdeaths)
 			{
 				UIText.text +=  "\r\n   Deaths: " + deaths; 
@@ -80,20 +76,4 @@ public class S_UISystem : MonoBehaviour {
 		deaths = 0;
 	}
 
-	public string GetTimeString(int m, int s, float ms)
-	{
-		string y = "";
-		bool a = false, b = false, c = false;
-		if (s < 10) {a = true;}
-		if (ms < 100) {b = true;}
-		if (ms < 10) {c = true;}
-		y += m;
-		y += ":";
-		if (a) {y += "0";}
-		y += s + ".";
-		if (b) {y += "0";}
-		if (c) {y += "0";}
-		y += ms;
-		return y;
-	}
 }

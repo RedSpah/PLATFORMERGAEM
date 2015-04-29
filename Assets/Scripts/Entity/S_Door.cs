@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RedHelp;
 
 public class S_Door : MonoBehaviour {
 	public int NormalLevelIndex;
@@ -25,172 +26,67 @@ public class S_Door : MonoBehaviour {
 	public string StageName; 
 	private int pick = 0;
 	private bool uplock = false, downlock = false;
-	private bool showup = false;
+	private bool showup = false, goshow = false;
 	private float size;
 	private TextMesh txt;
+
+	private const int NUM_OF_TIERS = 4;
+
+	private int[] times = new int[NUM_OF_TIERS];
+	private string[] names = new string[NUM_OF_TIERS];
+	private int[] indexes = new int[NUM_OF_TIERS];
+	private int[] ranks = new int[NUM_OF_TIERS];
+	private string[] tiernames = new string[NUM_OF_TIERS] {"Normal: ", "Hard:   ", "Expert: ", "Insane: "};
+	private Color[] tiercolours = new Color[NUM_OF_TIERS] {new Color(1,1,1), new Color(1, 0.6f, 0.6f), new Color(1, 0.2f, 0.2f), new Color(0.8f, 0, 0)};
+
+
 	void Start() 
 	{
 		txt = gameObject.GetComponentInChildren<TextMesh> ();
 		gameObject.GetComponentInChildren<MeshRenderer>().sortingOrder = 8;
-		txt.text = GetUpText ();
+		UpdateDisplayData ();
+		UpdateText ();
 		GameObject.Find("BG").GetComponent<RectTransform>().localScale = new Vector3(12+size ,5.1f,0.0f);
 		GameObject.Find("BG").GetComponent<SpriteRenderer>().enabled = false;
 		gameObject.GetComponentInChildren<MeshRenderer> ().enabled = false;
 	}
 	 
-	string GetUpText()
+	void UpdateText()
 	{
 		int k = Mathf.Max(NormalLevelName.Length, HardLevelName.Length, ExpertLevelName.Length, InsaneLevelName.Length);
 		size = k;
 		string output = "";
-		output += "<color=#eeaa00ff>" + StageName + "</color> \r\n <color=#8888ffff>Select Level: </color>\r\n";
-		//output += "Diff. Lev. | Name | Best Time | Rank \r\n</color>";
-
-		if (pick == 0)
+		output += Helper.ColorString(StageName,180,180,0) + Helper.LineBreak; 
+		output += Helper.ColorString("Select Level", 90,90,255) + Helper.LineBreak;
+		for(int i = 0; i < NUM_OF_TIERS; i++)
 		{
-			output += "<color=#eeaa00ff>[</color> ";
+			output += GetDifficultyChunk(i, k);
 		}
-		output += "<color=#ffffffff>Normal: " + NormalLevelName;
-		for(int i = NormalLevelName.Length; i <= k; i++)
-		{
-			output += " ";
-		}
-		output +="| " + RenderTime (NormalLevelTime) + " | </color>" + RenderRank (NormalLevelRank);
-		if (pick == 0)
-		{
-			output += " <color=#eeaa00ff>]</color>";
-		}
-
-		output += "\r\n";
-
-		if (pick == 1)
-		{
-			output += "<color=#eeaa00ff>[</color> ";
-		}
-		output += "<color=#ffaaaaff>Hard:   " + HardLevelName;
-		for(int i = HardLevelName.Length; i <= k; i++)
-		{
-			output += " ";
-		}
-		output += "| " + RenderTime (HardLevelTime) + " | </color>" + RenderRank (HardLevelRank) ;
-		if (pick == 1)
-		{
-			output += " <color=#eeaa00ff>]</color>";
-		}
-
-		output += "\r\n";
-
-		if (pick == 2)
-		{
-			output += "<color=#eeaa00ff>[</color> ";
-		}
-		output += "<color=#ff5555ff>Expert: " + ExpertLevelName;
-		for(int i = ExpertLevelName.Length; i <= k; i++)
-		{
-			output += " ";
-		}
-		output +="| " + RenderTime (ExpertLevelTime) + " | </color>" + RenderRank (ExpertLevelRank);
-		if (pick == 2)
-		{
-			output += " <color=#eeaa00ff>]</color>";
-		}
-		output += "\r\n";
-
-
-		if (pick == 3)
-		{
-			output += "<color=#eeaa00ff>[</color> ";
-		}
-		output += "<color=#dd0000ff>Insane: " + InsaneLevelName;
-		for(int i = InsaneLevelName.Length; i <= k; i++)
-		{
-			output += " ";
-		}
-		output +="| " + RenderTime (InsaneLevelTime) + " | </color>" + RenderRank (InsaneLevelRank) ;
-		if (pick == 3)
-		{
-			output += " <color=#eeaa00ff>]</color>";
-		}
-		
-
-		output += "\r";
-		return output;
-
+		txt.text = output;
 	}
-
-
-
-	string RenderTime(int time)
+	
+	string GetDifficultyChunk(int tier, int k)
 	{
-		if (time == -1)
+		string o = "";
+		if (pick == tier)
 		{
-			return "99:59.999";
+			o += Helper.ColorString("[",220,170,0);
 		}
-		int m = Mathf.FloorToInt (time / 3600);
-		int s = Mathf.FloorToInt (time / 60) % 60;
-		float ms = Mathf.FloorToInt((time % 60) * 1000/60); 
-		string y = "";
-		if (m < 10)
+		string h = "";
+		h += tiernames[tier] + names[tier];
+		for(int i = names[tier].Length; i <= k; i++)
 		{
-			y += "0";
+			h += " ";
 		}
-		bool a = false, b = false, c = false;
-		if (s < 10) {a = true;}
-		if (ms < 100) {b = true;}
-		if (ms < 10) {c = true;}
-		y += m;
-		y += ":";
-		if (a) {y += "0";}
-		y += s + ".";
-		if (b) {y += "0";}
-		if (c) {y += "0";}
-		y += ms;
-		return y;
-	}
-
-
-    string RenderRank (int r)
-	{
-		switch (r)
+		h += "| " + Helper.RenderTime (times[tier]) + " | ";
+		o += Helper.ColorString(h,tiercolours[tier]);
+		o += Helper.RenderRank (ranks[tier]);
+		if (pick == tier)
 		{
-		case 0:
-			return "<color=#555555ff>NONE</color>";
-		case 1:
-			return "<color=#777777ff>D   </color>";
-		case 2:
-			return "<color=#999999ff>D+  </color>";
-		case 3:
-			return "<color=#bbbb00ff>C   </color>";
-		case 4:
-			return "<color=#eeee00ff>C+  </color>";			
-		case 5:
-			return "<color=#0088ddff>B   </color>";
-
-		case 6:
-			return "<color=#33bbffff>B+  </color>";
-
-		case 7:
-			return "<color=#ff5500ff>A-  <color>";
-
-		case 8:
-			return "<color=#ff8800ff>A   </color>";
-
-		case 9:
-			return "<color=#ffbb00ff>A+  </color>";
-
-		case 10:
-			return "<color=#55ff11ff>S-  </color>";
-
-		case 11:
-			return "<color=#aaff66ff>S   </color>";
- 
-		case 12:
-			return "<color=#ddffaaff>SS  </color>";
-
-		default:
-			return "redspah was drunk while coding again";
-
+			o += Helper.ColorString("]",220,170,0);
 		}
+		o += "\r\n";
+		return o;
 	}
 
 	void OnTriggerStay2D(Collider2D other)
@@ -201,46 +97,93 @@ public class S_Door : MonoBehaviour {
 			pick = pick-1;
 			}
 			showup = true;
+			pick = (pick<0) ? 3 : (pick > 3) ? 0 : pick;
+			UpdateText();
 		};
+
 		if(Input.GetKey(KeyCode.DownArrow) && !downlock)
 		{
 			pick = pick+1;
+			pick = (pick<0) ? 3 : (pick > 3) ? 0 : pick;
+			UpdateText();
 		}
-		pick = (pick<0) ? 3 : (pick > 3) ? 0 : pick;
-		if (showup)
-			{
+
+		if (showup && !goshow)
+		{
 			GameObject.Find("BG").GetComponent<SpriteRenderer>().enabled = true;
 			gameObject.GetComponentInChildren<MeshRenderer> ().enabled = true;
-			//if (Input.GetKey (KeyCode.UpArrow)) {
-			//	Application.LoadLevel (NormalLevelIndex);
-			//}
+			goshow = true;
+		}
+
+		if (showup)
+			{
+			if (Input.GetKey (KeyCode.C))
+			{
+				switch (pick)
+				{
+				case 0:
+					Application.LoadLevel(NormalLevelIndex);
+					break;
+				case 1:
+					Application.LoadLevel(HardLevelIndex);
+					break;
+				case 2:
+					Application.LoadLevel(ExpertLevelIndex);
+					break;
+				case 3:
+					Application.LoadLevel(InsaneLevelIndex);
+					break;
+				}
+			}
 		}
 
 		uplock = Input.GetKey(KeyCode.UpArrow);
 		downlock = Input.GetKey(KeyCode.DownArrow);
 	}
-
-	void FixedUpdate()
-	{
-		txt.text = GetUpText ();
-	}
+	
 
 	public void GetTimesRef(ref int[] h)
 	{
-		try{
-		NormalLevelTime = h[NormalLevelIndex];
-		HardLevelTime = h[HardLevelIndex];
-		ExpertLevelTime = h[ExpertLevelIndex];
-		InsaneLevelTime = h[InsaneLevelIndex];
+		try
+		{
+			NormalLevelTime = h[NormalLevelIndex];
+			HardLevelTime = h[HardLevelIndex];
+			ExpertLevelTime = h[ExpertLevelIndex];
+			InsaneLevelTime = h[InsaneLevelIndex];
 		}
 		catch(System.IndexOutOfRangeException)
 		{
 			Debug.LogError ("you dun gooofed again");
 		}
+		UpdateDisplayData ();
+	}
+
+	void UpdateDisplayData()
+	{
+		times[0] = NormalLevelTime;
+		times[1] = HardLevelTime;
+		times[2] = ExpertLevelTime;
+		times[3] = InsaneLevelTime;
+		
+		names[0] = NormalLevelName;
+		names[1] = HardLevelName;
+		names[2] = ExpertLevelName;
+		names[3] = InsaneLevelName;
+		
+		ranks[0] = NormalLevelRank;
+		ranks[1] = HardLevelRank;
+		ranks[2] = ExpertLevelRank;
+		ranks[3] = InsaneLevelRank;
+		
+		indexes[0] = NormalLevelIndex;
+		indexes[1] = HardLevelIndex;
+		indexes[2] = ExpertLevelIndex;
+		indexes[3] = InsaneLevelIndex;
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
+		goshow = false;
 		showup = false;
 		GameObject.Find("BG").GetComponent<SpriteRenderer>().enabled = false;
 		gameObject.GetComponentInChildren<MeshRenderer> ().enabled = false;

@@ -33,6 +33,7 @@ public class S_LevelStart : MonoBehaviour {
 	public float FirstCamBufX, FirstCamBufY, FirstCamZoom, FirstCamSmooth;
 	public bool FirstCamFollowX, FirstCamFollowY;
 	private bool showdeaths = false;
+
 	void Start () {
 		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 

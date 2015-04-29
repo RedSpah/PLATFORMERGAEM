@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-
+using RedHelp;
 
 
 public class S_SpawnManager : MonoBehaviour {
@@ -24,22 +24,7 @@ public class S_SpawnManager : MonoBehaviour {
 		}
 	}
 
-	[Serializable]
-	public struct LevelTime
-	{
-		public int DTime;
-		public int DPTime;
-		public int CTime;
-		public int CPTime;
-		public int BTime;
-		public int BPTime;
-		public int AMTime;
-		public int ATime;
-		public int APTime;
-		public int SMTime;
-		public int STime;
-		public int SSTime;
-	}
+
 	[SerializeField]
 	public LevelTime[] LvTimes = new LevelTime[NoOfLevels];
 	Predicate<Level> predicate = FindLevelByIndex;
@@ -79,6 +64,7 @@ public class S_SpawnManager : MonoBehaviour {
 	
 
 	void OnLevelWasLoaded (int level) {
+
 		if (level != 0) {
 			leveltofind = level;
 			returnposition = LevelIndex.Find (predicate).position;
@@ -101,12 +87,7 @@ public class S_SpawnManager : MonoBehaviour {
 
 		for(int i = 0; i < NoOfLevels; i++)
 		{
-			if (!PlayerPrefs.HasKey("LevelTime" + i))
-			{
-				PlayerPrefs.SetInt("LevelTime" + i, -1); 
-			}
-
-			leveltime[i] = PlayerPrefs.GetInt("LevelTime" + i);
+			leveltime[i] = Helper.GetRecordTime(i);
 		}
 		foreach(GameObject d in GameObject.FindGameObjectsWithTag("Door"))
 		{

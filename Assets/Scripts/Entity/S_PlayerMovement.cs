@@ -8,51 +8,51 @@ public class S_PlayerMovement : MonoBehaviour {
 
 	/*-------------CONSTS--------------*/
 
-	[SerializeField] private  float MaximumRunningSpeed 			= 11f;		// Maximum Horizontal Fast allowed when not sprinting
-	[SerializeField] private  float RunningForce					= 80f;		// Running/Sprinting Force
-	[SerializeField] private  float DecelerationFactor			= 0.95f;	// By how much speed is multiplied when not running
+	[SerializeField] const float MaximumRunningSpeed 			= 11f;		// Maximum Horizontal Fast allowed when not sprinting
+	[SerializeField] const float RunningForce					= 80f;		// Running/Sprinting Force
+	[SerializeField] const float DecelerationFactor			= 0.95f;	// By how much speed is multiplied when not running
 
-	[SerializeField] private  float JumpingForce					= 1100f;		// Jumping Force
-	[SerializeField] private  short MaxJumps						= 1;       	// Maximum In-Air Jumps
+	[SerializeField] const float JumpingForce					= 1100f;		// Jumping Force
+	[SerializeField] const short MaxJumps						= 1;       	// Maximum In-Air Jumps
 	
-	[SerializeField] private  short WallGrabTime 					= 1;		// Time in frames needed to grab a wall
-	[SerializeField] private  short WallLetGoTime 				= 10;		// Time in frames needed to let go of a wall
-	[SerializeField] private  float WallgrabWalljumpMult 			= 1.20f;	// Multiplier to Walljump force when Wallgrabbing
-	[SerializeField] private  float WallgrabWallkickMult			= 0.90f;	// Multiplier to Wallkick force when Wallgrabbing
-	[SerializeField] private  float WallgrabGlueFactor			= 0.91f;	// Multiplier to vertical speed Wallgrabbing
+	[SerializeField] const short WallGrabTime 					= 1;		// Time in frames needed to grab a wall
+	[SerializeField] const short WallLetGoTime 				= 10;		// Time in frames needed to let go of a wall
+	[SerializeField] const float WallgrabWalljumpMult 			= 1.20f;	// Multiplier to Walljump force when Wallgrabbing
+	[SerializeField] const float WallgrabWallkickMult			= 0.90f;	// Multiplier to Wallkick force when Wallgrabbing
+	[SerializeField] const float WallgrabGlueFactor			= 0.91f;	// Multiplier to vertical speed Wallgrabbing
 	
-	[SerializeField] private  float BoostForce 					= 2500f;	// Boosting Force
-	[SerializeField] private  short BoostSloMoTime 				= 60;		// Maximum Time in frames allowed to choose direction when boosting
-	[SerializeField] private  short BoostCooldown 				= 20;		// Boost cooldown
-	[SerializeField] private  float BoostedDecelerationFactor 	= 0.95f;	// By how much speed is multiplied when above maximum allowed speed
+	[SerializeField] const float BoostForce 					= 2500f;	// Boosting Force
+	[SerializeField] const short BoostSloMoTime 				= 60;		// Maximum Time in frames allowed to choose direction when boosting
+	[SerializeField] const short BoostCooldown 				= 20;		// Boost cooldown
+	[SerializeField] const float BoostedDecelerationFactor 	= 0.95f;	// By how much speed is multiplied when above maximum allowed speed
 
-	[SerializeField] private  float NodeGroundRadius				= 0.001f;	// Radius of detection of Ground nodes
-	[SerializeField] private  float NodeElseRadius 				= 0.02f; 	// Radius of detection of other nodes
+	[SerializeField] const float NodeGroundRadius				= 0.001f;	// Radius of detection of Ground nodes
+	[SerializeField] const float NodeElseRadius 				= 0.02f; 	// Radius of detection of other nodes
 
-	[SerializeField] private  float WallkickHorizontalMult		= 1.35f; 	// Multiplier to horizontal walljump force when wallkicking
-	[SerializeField] private  float WallkickVerticalMult			= 0.75f;	// Multiplier to vertical walljump force when wallkicking
-	[SerializeField] private  float WallkickComebackMult			= 0.40f;	// Multiplier to horizontal force in the opposide direction to wallkick after wallkicking
-	[SerializeField] private  short WallkickComebackTime			= 10;		// Length of that multiplier
+	[SerializeField] const float WallkickHorizontalMult		= 1.35f; 	// Multiplier to horizontal walljump force when wallkicking
+	[SerializeField] const float WallkickVerticalMult			= 0.75f;	// Multiplier to vertical walljump force when wallkicking
+	[SerializeField] const float WallkickComebackMult			= 0.40f;	// Multiplier to horizontal force in the opposide direction to wallkick after wallkicking
+	[SerializeField] const short WallkickComebackTime			= 10;		// Length of that multiplier
 
-	[SerializeField] private  bool WalljumpEnabled 				= true;	// Replace Wallkick with Walljump (can't decide which one's better)
-	[SerializeField] private  bool JumpWallRegenEnabled	 		= false;	// Allow airjumps to regen on touching walls
+	[SerializeField] private bool WalljumpEnabled 				= true;	// Replace Wallkick with Walljump (can't decide which one's better)
+	[SerializeField] private bool JumpWallRegenEnabled	 		= false;	// Allow airjumps to regen on touching walls
 
-	[SerializeField] private  float DashForce						= 400f;		// Dashing Force
-	[SerializeField] private  short MaxDashes						= 1;		// Maximum In-Air Dashes
-	[SerializeField] private  float DashAirPushForce				= 200f;		// Vertical Force when air-dashing
+	[SerializeField] const float DashForce						= 400f;		// Dashing Force
+	[SerializeField] const short MaxDashes						= 1;		// Maximum In-Air Dashes
+	[SerializeField] const float DashAirPushForce				= 200f;		// Vertical Force when air-dashing
 
-	[SerializeField] private  float GlideVerticalMult				= 0.8f;		// Vertical Speed Multiplier when gliding
-	[SerializeField] private  float GlideHorizontalMult			= 0.93f;	// Horizontal Speed Multiplier when gliding
+	[SerializeField] const float GlideVerticalMult				= 0.8f;		// Vertical Speed Multiplier when gliding
+	[SerializeField] const float GlideHorizontalMult			= 0.93f;	// Horizontal Speed Multiplier when gliding
 
-	[SerializeField] private  float MaximumSprintingSpeed 		= 17f;		// Maximium Horizontal Fast allowed when sprinting		
-	[SerializeField] private  short SprintTime 					= 90;		// Time in frames running needed to start sprinting
-	[SerializeField] private  float SprintJumpMult		 		= 1.15f;	// Jump height multiplier when jumping
+	[SerializeField] const float MaximumSprintingSpeed 		= 17f;		// Maximium Horizontal Fast allowed when sprinting		
+	[SerializeField] const short SprintTime 					= 90;		// Time in frames running needed to start sprinting
+	[SerializeField] const float SprintJumpMult		 		= 1.15f;	// Jump height multiplier when jumping
 
-	[SerializeField] private  float WallclimbForce				= 900f;		// Wallclimbing Force
-	[SerializeField] private  short MaxWallclimbs					= 1;		// Maximum allowed wallclimbs
-	[SerializeField] private  short WallclimbCooldown				= 12;		// Wallclimb cooldown
+	[SerializeField] const float WallclimbForce				= 900f;		// Wallclimbing Force
+	[SerializeField] const short MaxWallclimbs					= 1;		// Maximum allowed wallclimbs
+	[SerializeField] const short WallclimbCooldown				= 12;		// Wallclimb cooldown
 
-	[SerializeField] private  float PullupForce					= 750f;		// Pullup Force
+	[SerializeField] const float PullupForce					= 750f;		// Pullup Force
 	
 	[SerializeField] private  LayerMask CollisionMask;  						// Collision Mask
 	[SerializeField] private  Rigidbody2D Rigid;							// Reference to own rigidbody
