@@ -24,7 +24,6 @@ public class S_SpawnManager : MonoBehaviour {
 		}
 	}
 
-
 	[SerializeField]
 	public LevelTime[] LvTimes = new LevelTime[NoOfLevels];
 	Predicate<Level> predicate = FindLevelByIndex;

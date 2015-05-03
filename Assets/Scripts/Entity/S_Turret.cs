@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RedHelp;
+
 
 public class S_Turret : MonoBehaviour {
 
     /*------------CONSTS------------*/
-   
-    [SerializeField]
+
+
+   [SerializeField]
     private int GunInitWait = 20;
     [SerializeField]
     private int GunCooldown = 10;
@@ -15,6 +18,8 @@ public class S_Turret : MonoBehaviour {
     private float BulletSpeed = 200;
     [SerializeField]
     private float GunOffset = 0;
+
+
     
     [SerializeField]
     private bool ConstLaser = false;
@@ -62,12 +67,12 @@ public class S_Turret : MonoBehaviour {
 
     /*------------VARS------------*/
 
-	private Vector3 InitAngle;
+
 	private int BulletTimer = 0;
 	private int LaserTimer = 0;
 	private int TimeSeen;
 	private int CooldownTimer;
-	private bool CanSee;
+
 
     /*------------OBJECTS------------*/
 
@@ -83,23 +88,20 @@ public class S_Turret : MonoBehaviour {
     private GameObject BulletNoBoost;
     [SerializeField]
     private GameObject BulletBoost;
-    [SerializeField]
-    private LayerMask CollisionLayer;
-    [SerializeField]
-    private LayerMask PlayerLayer;
-    [SerializeField]
-    private LayerMask EndLevel;
+   	private Vector3 InitAngle;
+	private bool CanSee;
+	[SerializeField]
+	private LayerMask CollisionLayer;
+	[SerializeField]
+	private LayerMask PlayerLayer;
+	[SerializeField]
+	private LayerMask EndLevel;
+	[SerializeField]
+	private SubTurret[] turret;
 
 	void Start () {
 		
-        Laser.SetColors(AimColorBegin, AimColorEnd);
-        Laser.SetWidth(AimWidthBegin, AimWidthEnd);
-        Laser.material = AimMaterial;
-        Laser.enabled = true;
-        Laser.useWorldSpace = true;
-		if (PrimitiveTurret) {
-			FireAtWalls = true;
-		}
+   
 
 		CollisionLayer += EndLevel;
 		PlayerLayer += CollisionLayer;
@@ -241,25 +243,10 @@ public class S_Turret : MonoBehaviour {
 		CanSee = false;
 	}
 
-    public void ToggleTurret(bool state)
-    {
-        TurretActive = state;
-    }
-
-    public void ToggleTurretGun(bool state)
-    {
-        GunActive = state;
-    }
-
-    public void ToggleTurretLaser(bool state)
-    {
-        LaserActive = state;
-    }
-
-    public void ToggleTracking(bool state)
-    {
-        Tracking = state;
-    }
+  	public void ToggleTurret(bool i)
+	{
+		TurretActive = i;
+	}
 
     public void SetTarget(Transform f)
     {

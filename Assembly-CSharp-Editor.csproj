@@ -46,10 +46,21 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\AIFunctions.cs" />
+     <Compile Include="Assets\Editor\AIWindow.cs" />
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+     <Compile Include="Assets\Editor\TestEditorWindow.cs" />
+     <Compile Include="Assets\GridEditor2D\Editor\ColliderBuilder.cs" />
+     <Compile Include="Assets\GridEditor2D\Editor\EditorPostProcessor.cs" />
+     <Compile Include="Assets\GridEditor2D\Editor\GridEditor2D.cs" />
+     <Compile Include="Assets\GridEditor2D\Editor\GridSettings.cs" />
+     <Compile Include="Assets\GridEditor2D\Editor\PreviewWindow.cs" />
+     <Compile Include="Assets\GridEditor2D\Editor\SelectedWindow.cs" />
+     <Compile Include="Assets\GridEditor2D\Editor\SpriteSheetPicker.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapInspector.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileMapWizard.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Editor\TileSetNameWizard.cs" />
+     <None Include="Assets\GridEditor2D\ReadMe.txt" />
      <None Include="Assets\Scripts\Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

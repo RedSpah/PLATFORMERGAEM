@@ -46,6 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GridEditor2D\Example\Scripts\LaserGun.cs" />
+     <Compile Include="Assets\GridEditor2D\Example\Scripts\LaserShot.cs" />
+     <Compile Include="Assets\GridEditor2D\Example\Scripts\NPCMovement.cs" />
+     <Compile Include="Assets\GridEditor2D\Example\Scripts\SimpleMovement.cs" />
+     <Compile Include="Assets\GridEditor2D\Helper Scripts\Grid.cs" />
+     <Compile Include="Assets\GridEditor2D\Helper Scripts\LevelEditorLayer.cs" />
+     <Compile Include="Assets\GridEditor2D\Helper Scripts\TileManager.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Boostable.cs" />
      <Compile Include="Assets\Scripts\Entity\S_BulletLogic.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Door.cs" />
@@ -54,6 +61,8 @@
      <Compile Include="Assets\Scripts\Entity\S_PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Rocket.cs" />
      <Compile Include="Assets\Scripts\Entity\S_Turret.cs" />
+     <Compile Include="Assets\Scripts\Entity\SlaveGunTurret.cs" />
+     <Compile Include="Assets\Scripts\Entity\SlaveLaserTurret.cs" />
      <Compile Include="Assets\Scripts\Technical\GlobalHelper.cs" />
      <Compile Include="Assets\Scripts\Technical\S_CamTrigger.cs" />
      <Compile Include="Assets\Scripts\Technical\S_Camera.cs" />
@@ -75,6 +84,7 @@
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileMap.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileSet.cs" />
      <Compile Include="Assets\Tile Editor\Scripts\Class\TileSetManager.cs" />
+     <None Include="Assets\GridEditor2D\ReadMe.txt" />
      <None Include="Assets\Scripts\Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

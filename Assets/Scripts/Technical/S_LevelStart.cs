@@ -37,13 +37,8 @@ public class S_LevelStart : MonoBehaviour {
 
 	void Start () {
 		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-		if (GameObject.FindGameObjectWithTag ("SpawnManager") == null)
-		{
-			SetupAll ();
-			ResetLevel (true);
-			Debug.Log ("goes for debug");
-		}
-		else {
+		Debug.Log ("gutgid");
+
 			if (Application.loadedLevel != 0) {
 				SetupAll ();
 				ResetLevel (true);
@@ -54,7 +49,9 @@ public class S_LevelStart : MonoBehaviour {
 				ResetLevel (false);
 				Debug.Log ("goes for truth");
 			}
-		}
+
+
+
 	}
 
 	
@@ -254,7 +251,7 @@ public class S_LevelStart : MonoBehaviour {
 				d = y.GetComponent<S_Keyblock> ().break0;
 			}
 			//y.GetComponent<BoxCollider2D>().offset = new Vector2 (0.05f, -0.05f);
-			y.GetComponent<BoxCollider2D>().size = new Vector2 (0.9f, 1.1f);
+			y.GetComponent<BoxCollider2D>().size = new Vector2 (1.05f, 1.05f);
 		}
 		foreach (GameObject y in i) {
 			if (y.GetComponent<S_Keyblock> () == null) {

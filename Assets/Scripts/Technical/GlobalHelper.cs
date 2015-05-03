@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class GlobalHelper : MonoBehaviour {
 
 
@@ -9,7 +10,7 @@ public class GlobalHelper : MonoBehaviour {
 namespace RedHelp
 {
 	[System.Serializable]
-	public struct LevelTime
+	public class LevelTime
 	{
 		public int DTime;
 		public int DPTime;
@@ -20,9 +21,33 @@ namespace RedHelp
 		public int AMTime;
 		public int ATime;
 		public int APTime;
-		public int SMTime;
 		public int STime;
+		public int SPTime;
 		public int SSTime;
+	}
+
+	public enum SubTurretType {Gun, Laser};
+	public enum TrackingType {Turn, Aim, AimIgnore, Fire, FireIgnore};
+	
+	[System.Serializable]
+	public class SubTurret
+	{
+		public SubTurretType SubType;
+		public GameObject Projectile;
+		public float AngularOffset;
+		public int ProjectileVelocity;
+		public int InitDelay;
+		public int ContDelay;
+		public TrackingType Tracking;
+		public float TurnSpeed;
+		
+		
+		public GameObject ChildTurret;
+		public float CurAngle;
+		public int TimeSeen = 0;
+		public Transform FirePosition;
+		public Transform Target;
+		public bool Visible;
 	}
 
 
@@ -30,6 +55,7 @@ namespace RedHelp
 	class Helper
 	{
 		const string RECORD_TIME_HANDLE = "LevelTime";
+		private const string KEYBLOCK_BREAK0 = "";
 		public const string LineBreak = "\r\n"; 
 
 		public static string RenderTime(int time)
@@ -81,9 +107,9 @@ namespace RedHelp
 			case 9:
 				return "<color=#ffbb00ff>A+  </color>";
 			case 10:
-				return "<color=#55ff11ff>S-  </color>";
+				return "<color=#55ff11ff>S   </color>";
 			case 11:
-				return "<color=#aaff66ff>S   </color>";
+				return "<color=#aaff66ff>S+  </color>";
 			case 12:
 				return "<color=#ddffaaff>SS  </color>";
 			default:
